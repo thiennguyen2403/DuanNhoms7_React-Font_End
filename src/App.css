@@ -1,0 +1,32 @@
+.dark {
+  background-color: #000;
+  color: #eee;
+}
+.row .col-3 a {
+  text-decoration: none;
+}
+.header {
+  margin-left: 60%;
+  text-decoration: none;
+  padding-top: 30px;
+  font-size: 25px;
+}
+header {
+  margin-top: 2px;
+  height: 100px;
+  background-color: azure;
+}
+.img-thumbnail-custom {
+  width: 250px;
+  height: 250px;
+  padding: 5px;
+  object-fit: cover;
+  text-align: center;
+}
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.card img {
+  text-align: center;
+}
