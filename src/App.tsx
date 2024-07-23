@@ -10,6 +10,14 @@ import ProductForm from "./components/ProductForm";
 import AuthForm from "./pages/AuthForm";
 import Header from "./components/Header";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import ShopLeftSidebar from "./pages/categories/ShopLeftSidebar";
+import ProductDetail from "./pages/products/ProductDetail";
+import Login from "./pages/page/Login";
+import Register from "./pages/page/Register";
+import About from "./pages/page/About";
+import Cart from "./pages/page/Cart";
+import CheckOut from "./pages/page/CheckOut";
+import Contact from "./pages/page/Contact";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -60,6 +68,14 @@ function App() {
           element={<ProductForm onSubmit={onSubmitProduct} />}
         />
         <Route path="*" element={<Notfound />} />
+        <Route path="/categories" element={<ShopLeftSidebar />} />
+        <Route path="/products" element={<ProductDetail />} />
+        <Route path="/page/login" element={<Login />} />
+        <Route path="/page/register" element={<Register />} />
+        <Route path="/page/about" element={<About />} />
+        <Route path="/page/cart" element={<Cart />} />
+        <Route path="/page/contact" element={<Contact />} />
+        <Route path="/page/checkout" element={<CheckOut />} />
       </Routes>
     </>
   );
