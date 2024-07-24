@@ -11,13 +11,14 @@ import AuthForm from "./pages/AuthForm";
 import Header from "./components/Header";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ShopLeftSidebar from "./pages/categories/ShopLeftSidebar";
-import ProductDetail from "./pages/products/ProductDetail";
-import Login from "./pages/page/Login";
-import Register from "./pages/page/Register";
-import About from "./pages/page/About";
-import Cart from "./pages/page/Cart";
-import CheckOut from "./pages/page/CheckOut";
-import Contact from "./pages/page/Contact";
+import ProductDetail from "./pages/Clients/products/ProductDetail";
+import Login from "./pages/Clients/page/Login";
+import Register from "./pages/Clients/page/Register";
+import About from "./pages/Clients/page/About";
+import Cart from "./pages/Clients/page/Cart";
+import CheckOut from "./pages/Clients/page/CheckOut";
+import Contact from "./pages/Clients/page/Contact";
+import Blog from "./pages/blog/Blog";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -51,7 +52,19 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route index element={<Home product={products} />} />
+        <Route path="/">
+        <Route path="" element={<Home product={products}/>}/>
+        <Route path="categories" element={<ShopLeftSidebar />} />
+        <Route path="products" element={<ProductDetail />} />
+        <Route path="page/login" element={<Login />} />
+        <Route path="page/register" element={<Register />} />
+        <Route path="page/about" element={<About />} />
+        <Route path="page/cart" element={<Cart />} />
+        <Route path="page/contact" element={<Contact />} />
+        <Route path="page/checkout" element={<CheckOut />} />
+        <Route path="blog" element={<Blog/>} />
+        <Route path="*" element={<Notfound />} />
+        </Route>
         <Route path="/login" element={<AuthForm isLogin />} />
         <Route path="/register" element={<AuthForm />} />
 
@@ -67,15 +80,7 @@ function App() {
           path="/admin/product-edit/:id"
           element={<ProductForm onSubmit={onSubmitProduct} />}
         />
-        <Route path="*" element={<Notfound />} />
-        <Route path="/categories" element={<ShopLeftSidebar />} />
-        <Route path="/products" element={<ProductDetail />} />
-        <Route path="/page/login" element={<Login />} />
-        <Route path="/page/register" element={<Register />} />
-        <Route path="/page/about" element={<About />} />
-        <Route path="/page/cart" element={<Cart />} />
-        <Route path="/page/contact" element={<Contact />} />
-        <Route path="/page/checkout" element={<CheckOut />} />
+        
       </Routes>
     </>
   );

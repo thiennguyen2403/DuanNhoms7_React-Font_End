@@ -6,10 +6,7 @@ const ShopLeftSidebar = (props: Props) => {
   return (
     <>
       <body className="body-bg-6">
-        {/* loading.. */}
-        <div id="cr-overlay">
-          <span className="loader"></span>
-        </div>
+        
         {/* mobile */}
         <div className="cr-sidebar-overlay"></div>
         <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">
@@ -160,7 +157,7 @@ const ShopLeftSidebar = (props: Props) => {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="cr-breadcrumb-title">
-                    <h2>Shop</h2>
+                    <h2>Category</h2>
                     <span>
                       {" "}
                       <a href="index.html">Home</a> - Shop

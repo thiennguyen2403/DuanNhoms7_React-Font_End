@@ -5,10 +5,7 @@ interface Props {}
 const ProductDetail = (props: Props) => {
   return (
     <>
-      {/* <!-- Loader --> */}
-      <div id="cr-overlay">
-        <span className="loader"></span>
-      </div>
+      
       {/* mobile */}
       <div className="cr-sidebar-overlay"></div>
       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">

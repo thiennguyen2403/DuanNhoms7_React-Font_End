@@ -1,14 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface Props {}
 
-const About = (props: Props) => {
+const Contact = (props: Props) => {
   return (
     <>
-      {/* loading.. */}
-      <div id="cr-overlay">
-        <span className="loader"></span>
-      </div>
+      
       {/* mobile */}
       <div className="cr-sidebar-overlay"></div>
       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">
@@ -155,10 +153,10 @@ const About = (props: Props) => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="cr-breadcrumb-title">
-                  <h2>Shop</h2>
+                  <h2>Contact</h2>
                   <span>
                     {" "}
-                    <a href="index.html">Home</a> - Shop
+                    <Link to={'/'}>Home</Link> - Contact
                   </span>
                 </div>
               </div>
@@ -166,152 +164,156 @@ const About = (props: Props) => {
           </div>
         </div>
       </section>
-      {/* <!-- About --> */}
-      <section className="section-about padding-tb-100">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6">
-              <div
-                className="cr-about"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="400"
-              >
-                <h4 className="heading">About The Carrot</h4>
-                <div className="cr-about-content">
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Ratione, recusandae necessitatibus quasi incidunt alias
-                    adipisci pariatur earum iure beatae assumenda rerum quod.
-                    Tempora magni autem a voluptatibus neque.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-                    vitae rerum cum accusamus magni consequuntur architecto,
-                    ipsum deleniti expedita doloribus suscipit voluptatum eius
-                    perferendis amet!.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusantium, maxime amet architecto est exercitationem optio
-                    ea maiores corporis beatae, dolores doloribus libero
-                    nesciunt qui illum? Voluptates deserunt adipisci voluptatem
-                    magni sunt sed blanditiis quod aspernatur! Iusto?
-                  </p>
-                  <div className="elementor-counter">
-                    <div className="row">
-                      <div className="col-sm-4 col-12 margin-575">
-                        <h4 className="elementor">
-                          <span className="elementor-counter-number">1.2</span>
-                          <span className="elementor-suffix">k</span>
-                        </h4>
-                        <div className="elementor-counter-title">
-                          <span>Vendors</span>
-                        </div>
-                      </div>
-                      <div className="col-sm-4 col-12 margin-575">
-                        <h4 className="elementor">
-                          <span className="elementor-counter-number">410</span>
-                          <span className="elementor-suffix">k</span>
-                        </h4>
-                        <div className="elementor-counter-title">
-                          <span>Customers</span>
-                        </div>
-                      </div>
-                      <div className="col-sm-4 col-12 margin-575">
-                        <h4 className="elementor">
-                          <span className="elementor-counter-number">34</span>
-                          <span className="elementor-suffix">k</span>
-                        </h4>
-                        <div className="elementor-counter-title">
-                          <span>Products</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="cr-about-image"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="800"
-              >
-                <img src="assets/img/about/1.jpg" alt="side-view" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* <!-- Services --> */}
-      <section className="section-services padding-b-100">
+      {/* <!-- Contact --> */}
+      <section className="section-Contact padding-tb-100">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div
-                className="cr-services-border"
+                className="mb-30"
                 data-aos="fade-up"
                 data-aos-duration="2000"
+                data-aos-delay="400"
               >
-                <div className="cr-service-slider swiper-container">
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <div className="cr-services">
-                        <div className="cr-services-image">
-                          <i className="ri-red-packet-line"></i>
-                        </div>
-                        <div className="cr-services-contain">
-                          <h4>Product Packing</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="cr-services">
-                        <div className="cr-services-image">
-                          <i className="ri-customer-service-2-line"></i>
-                        </div>
-                        <div className="cr-services-contain">
-                          <h4>24X7 Support</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="cr-services">
-                        <div className="cr-services-image">
-                          <i className="ri-truck-line"></i>
-                        </div>
-                        <div className="cr-services-contain">
-                          <h4>Delivery in 5 Days</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="cr-services">
-                        <div className="cr-services-image">
-                          <i className="ri-money-dollar-box-line"></i>
-                        </div>
-                        <div className="cr-services-contain">
-                          <h4>Payment Secure</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="cr-banner">
+                  <h2>Get in Touch</h2>
+                </div>
+                <div className="cr-banner-sub-title">
+                  <p>
+                    Prepared is me marianne pleasure likewise debating. Wonder
+                    an unable except better stairs do ye admire. His secure
+                    called esteem praise.
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="row mb-minus-24">
+            <div
+              className="col-lg-4 col-md-6 col-12 mb-24"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="400"
+            >
+              <div className="cr-info-box">
+                <div className="cr-icon">
+                  <i className="ri-phone-line"></i>
+                </div>
+                <div className="cr-info-content">
+                  <h4 className="heading">Contact</h4>
+                  <p>
+                    <a href="javascript:void(0)">
+                      <i className="ri-phone-line"></i> &nbsp; (+91)-9876XXXXX
+                    </a>
+                  </p>
+                  <p>
+                    <a href="javascript:void(0)">
+                      <i className="ri-phone-line"></i> &nbsp; (+91)-987654XXXX
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="col-lg-4 col-md-6 col-12 mb-24"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="600"
+            >
+              <div className="cr-info-box">
+                <div className="cr-icon">
+                  <i className="ri-mail-line"></i>
+                </div>
+                <div className="cr-info-content">
+                  <h4 className="heading">Mail & Website</h4>
+                  <p>
+                    <a href="javascript:void(0)">
+                      <i className="ri-mail-line"></i> &nbsp;
+                      mail.example@gmail.com
+                    </a>
+                  </p>
+                  <p>
+                    <a href="javascript:void(0)">
+                      <i className="ri-globe-line"></i> &nbsp;
+                      www.yourdomain.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="col-lg-4 col-12 mb-24"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="800"
+            >
+              <div className="cr-info-box">
+                <div className="cr-icon">
+                  <i className="ri-map-pin-line"></i>
+                </div>
+                <div className="cr-info-content">
+                  <h4 className="heading">Address</h4>
+                  <p>
+                    <a href="javascript:void(0)">
+                      <i className="ri-map-pin-line"></i> &nbsp; 140 Ruami
+                      Moraes Filho, 987 - Salvador - MA, 40352, Brazil.
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row padding-t-100 mb-minus-24">
+            <div
+              className="col-md-6 col-12 mb-24"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="400"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"
+                title="maps"
+              ></iframe>
+            </div>
+            <div
+              className="col-md-6 col-12 mb-24"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="800"
+            >
+              <form className="cr-content-form">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="cr-form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="cr-form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Phone"
+                    className="cr-form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    className="cr-form-control"
+                    id="exampleFormControlTextarea1"
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+                <button type="button" className="cr-button">
+                  Submit
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -856,4 +858,4 @@ const About = (props: Props) => {
   );
 };
 
-export default About;
+export default Contact;

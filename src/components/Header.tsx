@@ -52,19 +52,19 @@ const Header = () => {
                       </a>
                       <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" href="register.html">
+                          <Link className="dropdown-item" to={'page/register'}>
                             Register
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="checkout.html">
+                          <Link className="dropdown-item" to={'page/checkout'}>
                             Checkout
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="login.html">
+                          <Link className="dropdown-item" to={'page/login'}>
                             Login
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </li>
@@ -463,14 +463,14 @@ const Header = () => {
                 >
                   <ul className="navbar-nav">
                     <li className="nav-item">
-                      <a className="nav-link" href="index.html">
+                      <Link className="nav-link" to={"/"} >
                         Home
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item dropdown">
                       <Link
                         className="nav-link dropdown-toggle"
-                        to={"/categories"}
+                        to={"categories"}
                       >
                         Category
                       </Link>
@@ -478,7 +478,7 @@ const Header = () => {
                     <li className="nav-item dropdown">
                       <Link
                         className="nav-link dropdown-toggle"
-                        to={"/products"}
+                        to={"products"}
                       >
                         Product
                       </Link>
@@ -497,89 +497,39 @@ const Header = () => {
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"/page/contact"}>
+                          <Link className="dropdown-item" to={"page/contact"}>
                             Contact Us
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"/page/cart"}>
+                          <Link className="dropdown-item" to={"page/cart"}>
                             Cart
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"/page/checkout"}>
+                          <Link className="dropdown-item" to={"page/checkout"}>
                             Checkout
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"/page/login"}>
+                          <Link className="dropdown-item" to={"page/login"}>
                             Login
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"/page/register"}>
+                          <Link className="dropdown-item" to={"page/register"}>
                             Register
                           </Link>
                         </li>
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <a
+                      <Link
                         className="nav-link dropdown-toggle"
-                        href="javascript:void(0)"
+                        to={'blog'}
                       >
                         Blog
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a
-                            className="dropdown-item"
-                            href="blog-left-sidebar.html"
-                          >
-                            Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item"
-                            href="blog-right-sidebar.html"
-                          >
-                            Right Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item"
-                            href="blog-full-width.html"
-                          >
-                            Full Width
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item"
-                            href="blog-detail-left-sidebar.html"
-                          >
-                            Detail Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item"
-                            href="blog-detail-right-sidebar.html"
-                          >
-                            Detail Right Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item"
-                            href="blog-detail-full-width.html"
-                          >
-                            Detail Full Width
-                          </a>
-                        </li>
-                      </ul>
+                      </Link>
                     </li>
                   </ul>
                 </div>

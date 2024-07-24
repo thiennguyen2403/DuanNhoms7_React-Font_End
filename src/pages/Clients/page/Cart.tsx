@@ -1,14 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface Props {}
 
-const Contact = (props: Props) => {
+const Cart = (props: Props) => {
   return (
     <>
-      {/* loading.. */}
-      <div id="cr-overlay">
-        <span className="loader"></span>
-      </div>
+      
       {/* mobile */}
       <div className="cr-sidebar-overlay"></div>
       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">
@@ -155,10 +153,10 @@ const Contact = (props: Props) => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="cr-breadcrumb-title">
-                  <h2>Shop</h2>
+                  <h2>Cart</h2>
                   <span>
                     {" "}
-                    <a href="index.html">Home</a> - Shop
+                    <Link to={'/'}>Home</Link> - Cart
                   </span>
                 </div>
               </div>
@@ -166,10 +164,10 @@ const Contact = (props: Props) => {
           </div>
         </div>
       </section>
-      {/* <!-- Contact --> */}
-      <section className="section-Contact padding-tb-100">
+      {/* <!-- Cart --> */}
+      <section className="section-cart padding-t-100">
         <div className="container">
-          <div className="row">
+          <div className="row d-none">
             <div className="col-lg-12">
               <div
                 className="mb-30"
@@ -178,144 +176,500 @@ const Contact = (props: Props) => {
                 data-aos-delay="400"
               >
                 <div className="cr-banner">
-                  <h2>Get in Touch</h2>
+                  <h2>Cart</h2>
                 </div>
                 <div className="cr-banner-sub-title">
                   <p>
-                    Prepared is me marianne pleasure likewise debating. Wonder
-                    an unable except better stairs do ye admire. His secure
-                    called esteem praise.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore lacus vel facilisis.{" "}
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row mb-minus-24">
-            <div
-              className="col-lg-4 col-md-6 col-12 mb-24"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-              data-aos-delay="400"
-            >
-              <div className="cr-info-box">
-                <div className="cr-icon">
-                  <i className="ri-phone-line"></i>
-                </div>
-                <div className="cr-info-content">
-                  <h4 className="heading">Contact</h4>
-                  <p>
-                    <a href="javascript:void(0)">
-                      <i className="ri-phone-line"></i> &nbsp; (+91)-9876XXXXX
-                    </a>
-                  </p>
-                  <p>
-                    <a href="javascript:void(0)">
-                      <i className="ri-phone-line"></i> &nbsp; (+91)-987654XXXX
-                    </a>
-                  </p>
+          <div className="row">
+            <div className="col-12">
+              <div
+                className="cr-cart-content"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="row">
+                  <form action="#">
+                    <div className="cr-table-content">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Product</th>
+                            <th>price</th>
+                            <th className="text-center">Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="cr-cart-name">
+                              <a href="javascript:void(0)">
+                                <img
+                                  src="assets/img/product/1.jpg"
+                                  alt="product-1"
+                                  className="cr-cart-img"
+                                />
+                                Organic Lemon
+                              </a>
+                            </td>
+                            <td className="cr-cart-price">
+                              <span className="amount">$56.00</span>
+                            </td>
+                            <td className="cr-cart-qty">
+                              <div className="cart-qty-plus-minus">
+                                <button type="button" className="plus">
+                                  +
+                                </button>
+                                <input
+                                  type="text"
+                                  placeholder="."
+                                  value="1"
+                                  className="quantity"
+                                />
+                                <button type="button" className="minus">
+                                  -
+                                </button>
+                              </div>
+                            </td>
+                            <td className="cr-cart-subtotal">$56.00</td>
+                            <td className="cr-cart-remove">
+                              <a href="javascript:void(0)">
+                                <i className="ri-delete-bin-line"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="cr-cart-name">
+                              <a href="javascript:void(0)">
+                                <img
+                                  src="assets/img/product/2.jpg"
+                                  alt="product-1"
+                                  className="cr-cart-img"
+                                />
+                                Apple Juice
+                              </a>
+                            </td>
+                            <td className="cr-cart-price">
+                              <span className="amount">$75.00</span>
+                            </td>
+                            <td className="cr-cart-qty">
+                              <div className="cart-qty-plus-minus">
+                                <button type="button" className="plus">
+                                  +
+                                </button>
+                                <input
+                                  type="text"
+                                  placeholder="."
+                                  value="1"
+                                  className="quantity"
+                                />
+                                <button type="button" className="minus">
+                                  -
+                                </button>
+                              </div>
+                            </td>
+                            <td className="cr-cart-subtotal">$75.00</td>
+                            <td className="cr-cart-remove">
+                              <a href="javascript:void(0)">
+                                <i className="ri-delete-bin-line"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="cr-cart-name">
+                              <a href="javascript:void(0)">
+                                <img
+                                  src="assets/img/product/3.jpg"
+                                  alt="product-1"
+                                  className="cr-cart-img"
+                                />
+                                Watermelon 5kg Pack
+                              </a>
+                            </td>
+                            <td className="cr-cart-price">
+                              <span className="amount">$48.00</span>
+                            </td>
+                            <td className="cr-cart-qty">
+                              <div className="cart-qty-plus-minus">
+                                <button type="button" className="plus">
+                                  +
+                                </button>
+                                <input
+                                  type="text"
+                                  placeholder="."
+                                  value="1"
+                                  className="quantity"
+                                />
+                                <button type="button" className="minus">
+                                  -
+                                </button>
+                              </div>
+                            </td>
+                            <td className="cr-cart-subtotal">$48.00</td>
+                            <td className="cr-cart-remove">
+                              <a href="javascript:void(0)">
+                                <i className="ri-delete-bin-line"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="cr-cart-name">
+                              <a href="javascript:void(0)">
+                                <img
+                                  src="assets/img/product/4.jpg"
+                                  alt="product-1"
+                                  className="cr-cart-img"
+                                />
+                                Pomegranate 5 kg pack
+                              </a>
+                            </td>
+                            <td className="cr-cart-price">
+                              <span className="amount">$90.00</span>
+                            </td>
+                            <td className="cr-cart-qty">
+                              <div className="cart-qty-plus-minus">
+                                <button type="button" className="plus">
+                                  +
+                                </button>
+                                <input
+                                  type="text"
+                                  placeholder="."
+                                  value="1"
+                                  className="quantity"
+                                />
+                                <button type="button" className="minus">
+                                  -
+                                </button>
+                              </div>
+                            </td>
+                            <td className="cr-cart-subtotal">$90.00</td>
+                            <td className="cr-cart-remove">
+                              <a href="javascript:void(0)">
+                                <i className="ri-delete-bin-line"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="cr-cart-name">
+                              <a href="javascript:void(0)">
+                                <img
+                                  src="assets/img/product/5.jpg"
+                                  alt="product-1"
+                                  className="cr-cart-img"
+                                />
+                                Organic Peach Fruits
+                              </a>
+                            </td>
+                            <td className="cr-cart-price">
+                              <span className="amount">$50.00</span>
+                            </td>
+                            <td className="cr-cart-qty">
+                              <div className="cart-qty-plus-minus">
+                                <button type="button" className="plus">
+                                  +
+                                </button>
+                                <input
+                                  type="text"
+                                  placeholder="."
+                                  value="1"
+                                  className="quantity"
+                                />
+                                <button type="button" className="minus">
+                                  -
+                                </button>
+                              </div>
+                            </td>
+                            <td className="cr-cart-subtotal">$50.00</td>
+                            <td className="cr-cart-remove">
+                              <a href="javascript:void(0)">
+                                <i className="ri-delete-bin-line"></i>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <div className="cr-cart-update-bottom">
+                          <a href="javascript:void(0)" className="cr-links">
+                            Continue Shopping
+                          </a>
+                          <a href="cart.html" className="cr-button">
+                            Check Out
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
-            <div
-              className="col-lg-4 col-md-6 col-12 mb-24"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-              data-aos-delay="600"
-            >
-              <div className="cr-info-box">
-                <div className="cr-icon">
-                  <i className="ri-mail-line"></i>
+          </div>
+        </div>
+      </section>
+
+      {/* <!-- Popular products --> */}
+      <section
+        className="section-popular-products padding-tb-100"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        data-aos-delay="400"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="mb-30">
+                <div className="cr-banner">
+                  <h2>Popular Products</h2>
                 </div>
-                <div className="cr-info-content">
-                  <h4 className="heading">Mail & Website</h4>
+                <div className="cr-banner-sub-title">
                   <p>
-                    <a href="javascript:void(0)">
-                      <i className="ri-mail-line"></i> &nbsp;
-                      mail.example@gmail.com
-                    </a>
-                  </p>
-                  <p>
-                    <a href="javascript:void(0)">
-                      <i className="ri-globe-line"></i> &nbsp;
-                      www.yourdomain.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-12 mb-24"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-              data-aos-delay="800"
-            >
-              <div className="cr-info-box">
-                <div className="cr-icon">
-                  <i className="ri-map-pin-line"></i>
-                </div>
-                <div className="cr-info-content">
-                  <h4 className="heading">Address</h4>
-                  <p>
-                    <a href="javascript:void(0)">
-                      <i className="ri-map-pin-line"></i> &nbsp; 140 Ruami
-                      Moraes Filho, 987 - Salvador - MA, 40352, Brazil.
-                    </a>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et viverra maecenas
+                    accumsan lacus vel facilisis.{" "}
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row padding-t-100 mb-minus-24">
-            <div
-              className="col-md-6 col-12 mb-24"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-              data-aos-delay="400"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"
-                title="maps"
-              ></iframe>
-            </div>
-            <div
-              className="col-md-6 col-12 mb-24"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-              data-aos-delay="800"
-            >
-              <form className="cr-content-form">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="cr-form-control"
-                  />
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="cr-popular-product">
+                <div className="slick-slide">
+                  <div className="cr-product-card">
+                    <div className="cr-product-image">
+                      <div className="cr-image-inner zoom-image-hover">
+                        <img src="assets/img/product/9.jpg" alt="product-1" />
+                      </div>
+                      <div className="cr-side-view">
+                        <a href="javascript:void(0)" className="wishlist">
+                          <i className="ri-heart-line"></i>
+                        </a>
+                        <a
+                          className="model-oraganic-product"
+                          data-bs-toggle="modal"
+                          href="#quickview"
+                          role="button"
+                        >
+                          <i className="ri-eye-line"></i>
+                        </a>
+                      </div>
+                      <a className="cr-shopping-bag" href="javascript:void(0)">
+                        <i className="ri-shopping-bag-line"></i>
+                      </a>
+                    </div>
+                    <div className="cr-product-details">
+                      <div className="cr-brand">
+                        <a href="shop-left-sidebar.html">Snacks</a>
+                        <div className="cr-star">
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-line"></i>
+                          <p>(4.5)</p>
+                        </div>
+                      </div>
+                      <a href="product-left-sidebar.html" className="title">
+                        Best snakes with hazel nut mix pack 200gm
+                      </a>
+                      <p className="cr-price">
+                        <span className="new-price">$120.25</span>{" "}
+                        <span className="old-price">$123.25</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="cr-form-control"
-                  />
+                <div className="slick-slide">
+                  <div className="cr-product-card">
+                    <div className="cr-product-image">
+                      <div className="cr-image-inner zoom-image-hover">
+                        <img src="assets/img/product/10.jpg" alt="product-1" />
+                      </div>
+                      <div className="cr-side-view">
+                        <a href="javascript:void(0)" className="wishlist">
+                          <i className="ri-heart-line"></i>
+                        </a>
+                        <a
+                          className="model-oraganic-product"
+                          data-bs-toggle="modal"
+                          href="#quickview"
+                          role="button"
+                        >
+                          <i className="ri-eye-line"></i>
+                        </a>
+                      </div>
+                      <a className="cr-shopping-bag" href="javascript:void(0)">
+                        <i className="ri-shopping-bag-line"></i>
+                      </a>
+                    </div>
+                    <div className="cr-product-details">
+                      <div className="cr-brand">
+                        <a href="shop-left-sidebar.html">Snacks</a>
+                        <div className="cr-star">
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <p>(5.0)</p>
+                        </div>
+                      </div>
+                      <a href="product-left-sidebar.html" className="title">
+                        Sweet snakes crunchy nut mix 250gm pack
+                      </a>
+                      <p className="cr-price">
+                        <span className="new-price">$100.00</span>{" "}
+                        <span className="old-price">$110.00</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Phone"
-                    className="cr-form-control"
-                  />
+                <div className="slick-slide">
+                  <div className="cr-product-card">
+                    <div className="cr-product-image">
+                      <div className="cr-image-inner zoom-image-hover">
+                        <img src="assets/img/product/1.jpg" alt="product-1" />
+                      </div>
+                      <div className="cr-side-view">
+                        <a href="javascript:void(0)" className="wishlist">
+                          <i className="ri-heart-line"></i>
+                        </a>
+                        <a
+                          className="model-oraganic-product"
+                          data-bs-toggle="modal"
+                          href="#quickview"
+                          role="button"
+                        >
+                          <i className="ri-eye-line"></i>
+                        </a>
+                      </div>
+                      <a className="cr-shopping-bag" href="javascript:void(0)">
+                        <i className="ri-shopping-bag-line"></i>
+                      </a>
+                    </div>
+                    <div className="cr-product-details">
+                      <div className="cr-brand">
+                        <a href="shop-left-sidebar.html">Snacks</a>
+                        <div className="cr-star">
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-line"></i>
+                          <p>(4.5)</p>
+                        </div>
+                      </div>
+                      <a href="product-left-sidebar.html" className="title">
+                        Best snakes with hazel nut mix pack 200gm
+                      </a>
+                      <p className="cr-price">
+                        <span className="new-price">$120.25</span>{" "}
+                        <span className="old-price">$123.25</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="form-group">
-                  <textarea
-                    className="cr-form-control"
-                    id="exampleFormControlTextarea1"
-                    placeholder="Message"
-                  ></textarea>
+                <div className="slick-slide">
+                  <div className="cr-product-card">
+                    <div className="cr-product-image">
+                      <div className="cr-image-inner zoom-image-hover">
+                        <img src="assets/img/product/2.jpg" alt="product-1" />
+                      </div>
+                      <div className="cr-side-view">
+                        <a href="javascript:void(0)" className="wishlist">
+                          <i className="ri-heart-line"></i>
+                        </a>
+                        <a
+                          className="model-oraganic-product"
+                          data-bs-toggle="modal"
+                          href="#quickview"
+                          role="button"
+                        >
+                          <i className="ri-eye-line"></i>
+                        </a>
+                      </div>
+                      <a className="cr-shopping-bag" href="javascript:void(0)">
+                        <i className="ri-shopping-bag-line"></i>
+                      </a>
+                    </div>
+                    <div className="cr-product-details">
+                      <div className="cr-brand">
+                        <a href="shop-left-sidebar.html">Snacks</a>
+                        <div className="cr-star">
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <p>(5.0)</p>
+                        </div>
+                      </div>
+                      <a href="product-left-sidebar.html" className="title">
+                        Sweet snakes crunchy nut mix 250gm pack
+                      </a>
+                      <p className="cr-price">
+                        <span className="new-price">$100.00</span>{" "}
+                        <span className="old-price">$110.00</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <button type="button" className="cr-button">
-                  Submit
-                </button>
-              </form>
+                <div className="slick-slide">
+                  <div className="cr-product-card">
+                    <div className="cr-product-image">
+                      <div className="cr-image-inner zoom-image-hover">
+                        <img src="assets/img/product/3.jpg" alt="product-1" />
+                      </div>
+                      <div className="cr-side-view">
+                        <a href="javascript:void(0)" className="wishlist">
+                          <i className="ri-heart-line"></i>
+                        </a>
+                        <a
+                          className="model-oraganic-product"
+                          data-bs-toggle="modal"
+                          href="#quickview"
+                          role="button"
+                        >
+                          <i className="ri-eye-line"></i>
+                        </a>
+                      </div>
+                      <a className="cr-shopping-bag" href="javascript:void(0)">
+                        <i className="ri-shopping-bag-line"></i>
+                      </a>
+                    </div>
+                    <div className="cr-product-details">
+                      <div className="cr-brand">
+                        <a href="shop-left-sidebar.html">Snacks</a>
+                        <div className="cr-star">
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <i className="ri-star-fill"></i>
+                          <p>(5.0)</p>
+                        </div>
+                      </div>
+                      <a href="product-left-sidebar.html" className="title">
+                        Sweet snakes crunchy nut mix 250gm pack
+                      </a>
+                      <p className="cr-price">
+                        <span className="new-price">$100.00</span>{" "}
+                        <span className="old-price">$110.00</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -860,4 +1214,4 @@ const Contact = (props: Props) => {
   );
 };
 
-export default Contact;
+export default Cart;

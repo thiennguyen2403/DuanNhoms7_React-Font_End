@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react'
 
-interface Props {}
+type Props = {}
 
-const Login = (props: Props) => {
+const Blog = (props: Props) => {
   return (
     <>
-      {/* loading.. */}
-      <div id="cr-overlay">
-        <span className="loader"></span>
-      </div>
       {/* mobile */}
       <div className="cr-sidebar-overlay"></div>
       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">
@@ -155,7 +151,7 @@ const Login = (props: Props) => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="cr-breadcrumb-title">
-                  <h2>Shop</h2>
+                  <h2>Blog</h2>
                   <span>
                     {" "}
                     <a href="index.html">Home</a> - Shop
@@ -166,76 +162,182 @@ const Login = (props: Props) => {
           </div>
         </div>
       </section>
-      {/* <!-- Login --> */}
-      <section className="section-login padding-tb-100">
+      {/* <!-- Blog-Classic --> */}
+    <section className="section-blog-Classic padding-tb-100">
         <div className="container">
-          <div className="row d-none">
+            <div className="row mb-minus-24">
+                <div className="col-lg-6 mb-24">
+                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div className="cr-blog-classic-content">
+                            <div className="cr-comment">
+                                <span>By Admin <code> / 07 commen</code></span>
+                            </div>
+                            <h4>Best guide to Shopping for Organic ingredients.</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
+                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
+                            <a href="javascript:void(0)">read more</a>
+                        </div>
+                        <div className="cr-blog-image">
+                            <img src="assets/img/blog/blog-1.jpg" alt="blog-1"/>
+                        </div>
+                    </div>
+                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div className="cr-blog-classic-content">
+                            <div className="cr-comment">
+                                <span>By Admin <code> / 07 commen</code></span>
+                            </div>
+                            <h4>Best guide to Shopping for Organic ingredients.</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
+                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
+                            <a href="javascript:void(0)">read more</a>
+                        </div>
+                        <div className="cr-blog-image">
+                            <img src="assets/img/blog/blog-2.jpg" alt="blog-2"/>
+                        </div>
+                    </div>
+                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div className="cr-blog-classic-content">
+                            <div className="cr-comment">
+                                <span>By Admin <code> / 07 commen</code></span>
+                            </div>
+                            <h4>Best guide to Shopping for Organic ingredients.</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
+                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
+                            <a href="javascript:void(0)">read more</a>
+                        </div>
+                        <div className="cr-blog-image">
+                            <img src="assets/img/blog/blog-3.jpg" alt="blog-3"/>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-lg-6 mb-24">
+                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div className="cr-blog-classic-content">
+                            <div className="cr-comment">
+                                <span>By Admin <code> / 07 commen</code></span>
+                            </div>
+                            <h4>Best guide to Shopping for Organic ingredients.</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
+                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
+                            <a href="javascript:void(0)">read more</a>
+                        </div>
+                        <div className="cr-blog-image">
+                            <img src="assets/img/blog/blog-2.jpg" alt="blog-2"/>
+                        </div>
+                    </div>
+                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div className="cr-blog-classic-content">
+                            <div className="cr-comment">
+                                <span>By Admin <code> / 07 commen</code></span>
+                            </div>
+                            <h4>Best guide to Shopping for Organic ingredients.</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
+                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
+                            <a href="javascript:void(0)">read more</a>
+                        </div>
+                        <div className="cr-blog-image">
+                            <img src="assets/img/blog/blog-3.jpg" alt="blog-3"/>
+                        </div>
+                    </div>
+                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+                        <div className="cr-blog-classic-content">
+                            <div className="cr-comment">
+                                <span>By Admin <code> / 07 commen</code></span>
+                            </div>
+                            <h4>Best guide to Shopping for Organic ingredients.</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
+                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
+                            <a href="javascript:void(0)">read more</a>
+                        </div>
+                        <div className="cr-blog-image">
+                            <img src="assets/img/blog/blog-1.jpg" alt="blog-1"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="..." className="cr-pagination">
+                <ul className="pagination">
+                    <li className="page-item disabled">
+                        <span className="page-link">Previous</span>
+                    </li>
+                    <li className="page-item active" aria-current="page">
+                        <span className="page-link">1</span>
+                    </li>
+                    <li className="page-item"><a className="page-link" href="#">2</a></li>
+                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                    <li className="page-item">
+                        <a className="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+      {/* <!-- Services --> */}
+      <section className="section-services padding-b-100">
+        <div className="container">
+          <div className="row">
             <div className="col-lg-12">
               <div
-                className="mb-30"
+                className="cr-services-border"
                 data-aos="fade-up"
                 data-aos-duration="2000"
-                data-aos-delay="400"
               >
-                <div className="cr-banner">
-                  <h2>Login</h2>
+                <div className="cr-service-slider swiper-container">
+                  <div className="swiper-wrapper">
+                    <div className="swiper-slide">
+                      <div className="cr-services">
+                        <div className="cr-services-image">
+                          <i className="ri-red-packet-line"></i>
+                        </div>
+                        <div className="cr-services-contain">
+                          <h4>Product Packing</h4>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="swiper-slide">
+                      <div className="cr-services">
+                        <div className="cr-services-image">
+                          <i className="ri-customer-service-2-line"></i>
+                        </div>
+                        <div className="cr-services-contain">
+                          <h4>24X7 Support</h4>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="swiper-slide">
+                      <div className="cr-services">
+                        <div className="cr-services-image">
+                          <i className="ri-truck-line"></i>
+                        </div>
+                        <div className="cr-services-contain">
+                          <h4>Delivery in 5 Days</h4>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="swiper-slide">
+                      <div className="cr-services">
+                        <div className="cr-services-image">
+                          <i className="ri-money-dollar-box-line"></i>
+                        </div>
+                        <div className="cr-services-contain">
+                          <h4>Payment Secure</h4>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="cr-banner-sub-title">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore lacus vel facilisis.{" "}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
-              <div
-                className="cr-login"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-delay="400"
-              >
-                <div className="form-logo">
-                  <img src="assets/img/logo/logo.png" alt="logo" />
-                </div>
-                <form className="cr-content-form">
-                  <div className="form-group">
-                    <label>Email Address*</label>
-                    <input
-                      type="email"
-                      placeholder="Enter Your Email"
-                      className="cr-form-control"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Password*</label>
-                    <input
-                      type="password"
-                      placeholder="Enter Your password"
-                      className="cr-form-control"
-                    />
-                  </div>
-                  <div className="remember">
-                    <span className="form-group custom">
-                      <input type="checkbox" id="html" />
-                      <label>Remember Me</label>
-                    </span>
-                    <a className="link" href="forgot.html">
-                      Forgot Password?
-                    </a>
-                  </div>
-                  <br />
-                  <div className="login-buttons">
-                    <button type="button" className="cr-button">
-                      Login
-                    </button>
-                    <a href="register.html" className="link">
-                      Signup?
-                    </a>
-                  </div>
-                </form>
               </div>
             </div>
           </div>
@@ -778,7 +880,7 @@ const Login = (props: Props) => {
       {/* <!-- Main Custom --> */}
       <script src="assets/js/main.js"></script>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Blog
