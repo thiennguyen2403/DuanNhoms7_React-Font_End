@@ -1,8 +1,6 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
-
-const Blog = (props: Props) => {
+const Blog = () => {
   return (
     <>
       {/* mobile */}
@@ -163,115 +161,185 @@ const Blog = (props: Props) => {
         </div>
       </section>
       {/* <!-- Blog-Classic --> */}
-    <section className="section-blog-Classic padding-tb-100">
+      <section className="section-blog-Classic padding-tb-100">
         <div className="container">
-            <div className="row mb-minus-24">
-                <div className="col-lg-6 mb-24">
-                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div className="cr-blog-classic-content">
-                            <div className="cr-comment">
-                                <span>By Admin <code> / 07 commen</code></span>
-                            </div>
-                            <h4>Best guide to Shopping for Organic ingredients.</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
-                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
-                            <a href="javascript:void(0)">read more</a>
-                        </div>
-                        <div className="cr-blog-image">
-                            <img src="assets/img/blog/blog-1.jpg" alt="blog-1"/>
-                        </div>
-                    </div>
-                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div className="cr-blog-classic-content">
-                            <div className="cr-comment">
-                                <span>By Admin <code> / 07 commen</code></span>
-                            </div>
-                            <h4>Best guide to Shopping for Organic ingredients.</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
-                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
-                            <a href="javascript:void(0)">read more</a>
-                        </div>
-                        <div className="cr-blog-image">
-                            <img src="assets/img/blog/blog-2.jpg" alt="blog-2"/>
-                        </div>
-                    </div>
-                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div className="cr-blog-classic-content">
-                            <div className="cr-comment">
-                                <span>By Admin <code> / 07 commen</code></span>
-                            </div>
-                            <h4>Best guide to Shopping for Organic ingredients.</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
-                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
-                            <a href="javascript:void(0)">read more</a>
-                        </div>
-                        <div className="cr-blog-image">
-                            <img src="assets/img/blog/blog-3.jpg" alt="blog-3"/>
-                        </div>
-                    </div>
+          <div className="row mb-minus-24">
+            <div className="col-lg-6 mb-24">
+              <div
+                className="cr-blog-classic"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="cr-blog-classic-content">
+                  <div className="cr-comment">
+                    <span>
+                      By Admin <code> / 07 commen</code>
+                    </span>
+                  </div>
+                  <h4>Best guide to Shopping for Organic ingredients.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste alias odit cupiditate harum magnam tenetur inventore
+                    dicta voluptatum perferendis voluptate!
+                  </p>
+                  <a href="javascript:void(0)">read more</a>
                 </div>
-                <div className="col-lg-6 mb-24">
-                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div className="cr-blog-classic-content">
-                            <div className="cr-comment">
-                                <span>By Admin <code> / 07 commen</code></span>
-                            </div>
-                            <h4>Best guide to Shopping for Organic ingredients.</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
-                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
-                            <a href="javascript:void(0)">read more</a>
-                        </div>
-                        <div className="cr-blog-image">
-                            <img src="assets/img/blog/blog-2.jpg" alt="blog-2"/>
-                        </div>
-                    </div>
-                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div className="cr-blog-classic-content">
-                            <div className="cr-comment">
-                                <span>By Admin <code> / 07 commen</code></span>
-                            </div>
-                            <h4>Best guide to Shopping for Organic ingredients.</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
-                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
-                            <a href="javascript:void(0)">read more</a>
-                        </div>
-                        <div className="cr-blog-image">
-                            <img src="assets/img/blog/blog-3.jpg" alt="blog-3"/>
-                        </div>
-                    </div>
-                    <div className="cr-blog-classic" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div className="cr-blog-classic-content">
-                            <div className="cr-comment">
-                                <span>By Admin <code> / 07 commen</code></span>
-                            </div>
-                            <h4>Best guide to Shopping for Organic ingredients.</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste alias odit cupiditate harum
-                                magnam tenetur inventore dicta voluptatum perferendis voluptate!</p>
-                            <a href="javascript:void(0)">read more</a>
-                        </div>
-                        <div className="cr-blog-image">
-                            <img src="assets/img/blog/blog-1.jpg" alt="blog-1"/>
-                        </div>
-                    </div>
+                <div className="cr-blog-image">
+                  <img src="assets/img/blog/blog-1.jpg" alt="blog-1" />
                 </div>
+              </div>
+              <div
+                className="cr-blog-classic"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="cr-blog-classic-content">
+                  <div className="cr-comment">
+                    <span>
+                      By Admin <code> / 07 commen</code>
+                    </span>
+                  </div>
+                  <h4>Best guide to Shopping for Organic ingredients.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste alias odit cupiditate harum magnam tenetur inventore
+                    dicta voluptatum perferendis voluptate!
+                  </p>
+                  <a href="javascript:void(0)">read more</a>
+                </div>
+                <div className="cr-blog-image">
+                  <img src="assets/img/blog/blog-2.jpg" alt="blog-2" />
+                </div>
+              </div>
+              <div
+                className="cr-blog-classic"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="cr-blog-classic-content">
+                  <div className="cr-comment">
+                    <span>
+                      By Admin <code> / 07 commen</code>
+                    </span>
+                  </div>
+                  <h4>Best guide to Shopping for Organic ingredients.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste alias odit cupiditate harum magnam tenetur inventore
+                    dicta voluptatum perferendis voluptate!
+                  </p>
+                  <a href="javascript:void(0)">read more</a>
+                </div>
+                <div className="cr-blog-image">
+                  <img src="assets/img/blog/blog-3.jpg" alt="blog-3" />
+                </div>
+              </div>
             </div>
-            <nav aria-label="..." className="cr-pagination">
-                <ul className="pagination">
-                    <li className="page-item disabled">
-                        <span className="page-link">Previous</span>
-                    </li>
-                    <li className="page-item active" aria-current="page">
-                        <span className="page-link">1</span>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item">
-                        <a className="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            <div className="col-lg-6 mb-24">
+              <div
+                className="cr-blog-classic"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="cr-blog-classic-content">
+                  <div className="cr-comment">
+                    <span>
+                      By Admin <code> / 07 commen</code>
+                    </span>
+                  </div>
+                  <h4>Best guide to Shopping for Organic ingredients.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste alias odit cupiditate harum magnam tenetur inventore
+                    dicta voluptatum perferendis voluptate!
+                  </p>
+                  <a href="javascript:void(0)">read more</a>
+                </div>
+                <div className="cr-blog-image">
+                  <img src="assets/img/blog/blog-2.jpg" alt="blog-2" />
+                </div>
+              </div>
+              <div
+                className="cr-blog-classic"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="cr-blog-classic-content">
+                  <div className="cr-comment">
+                    <span>
+                      By Admin <code> / 07 commen</code>
+                    </span>
+                  </div>
+                  <h4>Best guide to Shopping for Organic ingredients.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste alias odit cupiditate harum magnam tenetur inventore
+                    dicta voluptatum perferendis voluptate!
+                  </p>
+                  <a href="javascript:void(0)">read more</a>
+                </div>
+                <div className="cr-blog-image">
+                  <img src="assets/img/blog/blog-3.jpg" alt="blog-3" />
+                </div>
+              </div>
+              <div
+                className="cr-blog-classic"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay="400"
+              >
+                <div className="cr-blog-classic-content">
+                  <div className="cr-comment">
+                    <span>
+                      By Admin <code> / 07 commen</code>
+                    </span>
+                  </div>
+                  <h4>Best guide to Shopping for Organic ingredients.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste alias odit cupiditate harum magnam tenetur inventore
+                    dicta voluptatum perferendis voluptate!
+                  </p>
+                  <a href="javascript:void(0)">read more</a>
+                </div>
+                <div className="cr-blog-image">
+                  <img src="assets/img/blog/blog-1.jpg" alt="blog-1" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav aria-label="..." className="cr-pagination">
+            <ul className="pagination">
+              <li className="page-item disabled">
+                <span className="page-link">Previous</span>
+              </li>
+              <li className="page-item active" aria-current="page">
+                <span className="page-link">1</span>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">
+                  2
+                </a>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">
+                  3
+                </a>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-    </section>
+      </section>
       {/* <!-- Services --> */}
       <section className="section-services padding-b-100">
         <div className="container">
@@ -880,7 +948,7 @@ const Blog = (props: Props) => {
       {/* <!-- Main Custom --> */}
       <script src="assets/js/main.js"></script>
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

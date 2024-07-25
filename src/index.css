@@ -3210,7 +3210,8 @@ ul.navbar-nav .dropdown:hover .dropdown-menu {
   width: 100%;
   height: 600px;
   position: relative;
-  background-image: url("../img/deal/bg-deal.jpg");
+  /* url("../img/deal/bg-deal.jpg") */
+  background-image: url("../src/css/assets/img/deal/bg-deal.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

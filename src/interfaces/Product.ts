@@ -1,4 +1,5 @@
 export interface Product {
+  _id:string
   id?: number | string;
   title: string;
   price: number;

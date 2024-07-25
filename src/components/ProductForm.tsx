@@ -1,77 +1,59 @@
-import React, { useEffect } from "react";
-import { Product } from "../interfaces/Product";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { productSchema } from "../utils/valtidation";
-import { useParams } from "react-router-dom";
-import { instance } from "../api";
-type Prop = {
-  onSubmit: (product: Product) => void;
-};
+import { Link } from "react-router-dom";
 
-const ProductForm = ({ onSubmit }: Prop) => {
-  const { id } = useParams();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<Product>({
-    resolver: zodResolver(productSchema),
-  });
-  if (id) {
-    useEffect(() => {
-      (async () => {
-        const { data } = await instance.get(`/products/${id}`);
-        reset(data);
-      })();
-    }, [id]);
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
+import { Product } from "../interfaces/Product";
+
+const Dashboard = () => {
+  const { state, handleRemove } = useContext(ProductContext);
+
+  if (!state || !Array.isArray(state.products)) {
+    return <div>Loading...</div>;
   }
+
   return (
     <div>
-      <h1>{id ? "Edit-Product" : "Add-product"}</h1>
-      <form onSubmit={handleSubmit((product) => onSubmit({ ...product, id }))}>
-        <div className="mb-3">
-          <label className="form-label">Title</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            {...register("title", { required: true })}
-          />
-          {errors.title && (
-            <div className="text-danger">{errors.title.message}</div>
-          )}
-        </div>
-        <div className="mb-3">
-          <label className="form-label">price</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            {...register("price", { valueAsNumber: true })}
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">description</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            {...register("description", { required: true })}
-          />
-          {errors.description && <div>{errors.description.message}</div>}
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      <h1>Hello Admin</h1>
+      <Link className="btn btn-success" to={`/admin/product-add`}>
+        Add new product
+      </Link>
+      <table className="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {state.products.map((item: Product) => (
+            <tr key={item._id}>
+              <td>{item._id}</td>
+              <td>{item.title}</td>
+              <td>{item.price}</td>
+              <td>{item.description}</td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleRemove(item._id)}
+                >
+                  Remove
+                </button>
+                <Link
+                  className="btn btn-success"
+                  to={`/admin/product-edit/${item._id}`}
+                >
+                  Update
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default ProductForm;
+export default Dashboard;

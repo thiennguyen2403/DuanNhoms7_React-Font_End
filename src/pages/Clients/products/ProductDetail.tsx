@@ -1,8 +1,8 @@
 import React from "react";
 
-interface Props {}
 
-const ProductDetail = (props: Props) => {
+
+const ProductDetail = () => {
   return (
     <>
       
