@@ -52,7 +52,7 @@ const Header = () => {
                       </a>
                       <ul className="dropdown-menu">
                         <li>
-                          <Link className="dropdown-item" to={'page/register'}>
+                          <Link className="dropdown-item" to={'/register'}>
                             Register
                           </Link>
                         </li>
@@ -62,7 +62,7 @@ const Header = () => {
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={'page/login'}>
+                          <Link className="dropdown-item" to={'/login'}>
                             Login
                           </Link>
                         </li>

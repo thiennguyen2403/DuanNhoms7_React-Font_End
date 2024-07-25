@@ -10,8 +10,7 @@ import Header from "./components/Header";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ShopLeftSidebar from "./pages/categories/ShopLeftSidebar";
 import ProductDetail from "./pages/Clients/products/ProductDetail";
-import Login from "./pages/Clients/page/Login";
-import Register from "./pages/Clients/page/Register";
+
 import About from "./pages/Clients/page/About";
 import Cart from "./pages/Clients/page/Cart";
 import CheckOut from "./pages/Clients/page/CheckOut";
@@ -27,8 +26,6 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="categories" element={<ShopLeftSidebar />} />
           <Route path="products" element={<ProductDetail />} />
-          <Route path="page/login" element={<Login />} />
-          <Route path="page/register" element={<Register />} />
           <Route path="page/about" element={<About />} />
           <Route path="page/cart" element={<Cart />} />
           <Route path="page/contact" element={<Contact />} />
