@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   isLogin?: boolean;
 };
-
 const AuthForm = ({ isLogin }: Props) => {
   const { login: contextLogin } = useAuth();
   const nav = useNavigate();
@@ -31,6 +30,7 @@ const AuthForm = ({ isLogin }: Props) => {
         const res = await instance.post(`/users/register`, {
           email: data.email,
           password: data.password,
+         
         });
         alert(res.data.message);
         nav("/login");

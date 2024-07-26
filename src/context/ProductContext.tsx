@@ -48,16 +48,14 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   const handleProduct = async (product: Product) => {
     try {
       const { id, ...productData } = product;
-      let response;
-
+      
       if (id) {
-        response = await instance.patch(`/products/${id}`, productData);
+      const  response = await instance.patch(`/products/${id}`, productData);
         dispatch({ type: "UPDATE_PRODUCT", payload: response.data.data });
       } else {
-        response = await instance.post("/products", productData);
+      const  response = await instance.post("/products", productData);
         dispatch({ type: "ADD_PRODUCT", payload: response.data.data });
       }
-
       nav("/admin");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
