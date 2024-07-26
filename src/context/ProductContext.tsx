@@ -2,9 +2,9 @@ import { ReactNode, useEffect, useReducer, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../interfaces/Product";
 
-import { instance } from "../api";
 import axios from "axios";
 import productReducer from "../reduces/productReducer";
+import instance from "../api";
 type ProductContextType = {
   state: { products: Product[] };
   handleRemove: (id: string) => void; // Đổi kiểu dữ liệu thành string
@@ -38,7 +38,6 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleRemove = async (id: string) => {
-    // Đổi kiểu dữ liệu thành string
     try {
       await instance.delete(`/products/${id}`);
       dispatch({ type: "DELETE_PRODUCT", payload: id });
@@ -49,14 +48,16 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   const handleProduct = async (product: Product) => {
     try {
       const { id, ...productData } = product;
+      let response;
 
       if (id) {
-        const response = await instance.patch(`/products/${id}`, productData);
-        dispatch({ type: "UPDATE_PRODUCT", payload: response.data });
+        response = await instance.patch(`/products/${id}`, productData);
+        dispatch({ type: "UPDATE_PRODUCT", payload: response.data.data });
       } else {
-        const response = await instance.post("/products", productData);
-        dispatch({ type: "ADD_PRODUCT", payload: response.data });
+        response = await instance.post("/products", productData);
+        dispatch({ type: "ADD_PRODUCT", payload: response.data.data });
       }
+
       nav("/admin");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {

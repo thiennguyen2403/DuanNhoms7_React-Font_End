@@ -16,3 +16,7 @@ export const registerSchema = z.object({
   password: z.string().min(6).max(255),
   confirmPass: z.string().min(6).max(255),
 });
+export const categorySchema = z.object({
+  title: z.string().min(6),
+  description: z.string().optional(),
+});

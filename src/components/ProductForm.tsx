@@ -1,59 +1,119 @@
-import { Link } from "react-router-dom";
-
-import { useContext } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { z } from "zod";
 import { ProductContext } from "../context/ProductContext";
 import { Product } from "../interfaces/Product";
+import instance from "../api";
+import { Category } from "../interfaces/Category";
 
-const Dashboard = () => {
-  const { state, handleRemove } = useContext(ProductContext);
+const productSchema = z.object({
+  title: z.string().min(6),
+  price: z.number().min(0),
+  description: z.string().optional(),
+});
 
-  if (!state || !Array.isArray(state.products)) {
-    return <div>Loading...</div>;
-  }
+const ProductForm = () => {
+  const { id } = useParams();
+  const { handleProduct } = useContext(ProductContext);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+  } = useForm<Product>({
+    resolver: zodResolver(productSchema),
+  });
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await instance.get(`/products/${id}`);
+        console.log("Fetched data:", data); // Log dữ liệu
+        reset(data.data);
+      } catch (error) {
+        console.error("Failed to fetch product:", error);
+      }
+    };
+
+    if (id) {
+      fetchProduct();
+    }
+  }, [id, reset]);
+  useEffect(() => {
+    (async () => {
+      const { data } = await instance.get(`/categories`);
+      console.log(data);
+      setCategories(data.data);
+    })();
+  }, []);
 
   return (
     <div>
-      <h1>Hello Admin</h1>
-      <Link className="btn btn-success" to={`/admin/product-add`}>
-        Add new product
-      </Link>
-      <table className="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {state.products.map((item: Product) => (
-            <tr key={item._id}>
-              <td>{item._id}</td>
-              <td>{item.title}</td>
-              <td>{item.price}</td>
-              <td>{item.description}</td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleRemove(item._id)}
-                >
-                  Remove
-                </button>
-                <Link
-                  className="btn btn-success"
-                  to={`/admin/product-edit/${item._id}`}
-                >
-                  Update
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <form onSubmit={handleSubmit((data) => handleProduct({ ...data, id }))}>
+        <h1>{id ? "Update product" : "Add product"}</h1>
+
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">
+            Title
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            {...register("title", { required: true })}
+          />
+          {errors.title && (
+            <span className="text-danger">{errors.title.message}</span>
+          )}
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="price" className="form-label">
+            Price
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            {...register("price", { required: true, valueAsNumber: true })}
+          />
+          {errors.price && (
+            <span className="text-danger">{errors.price.message}</span>
+          )}
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">
+            Description
+          </label>
+          <textarea
+            rows={4}
+            className="form-control"
+            {...register("description")}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="" className="form-label">
+            Category
+          </label>
+          <select {...register("category")} className="form-control">
+            {categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-3">
+          <button className="btn btn-primary w-100">
+            {id ? "Update product" : "Add product"}
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
 
-export default Dashboard;
+export default ProductForm;

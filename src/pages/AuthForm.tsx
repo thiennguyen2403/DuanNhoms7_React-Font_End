@@ -1,8 +1,11 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "../context/AuthContext";
+
 import { loginSchema, registerSchema } from "../utils/valtidation";
 import { User } from "../interfaces/User";
-import { instance } from "../api";
+import axios from "axios";
+import instance from "../api";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -10,6 +13,8 @@ type Props = {
 };
 
 const AuthForm = ({ isLogin }: Props) => {
+  const { login: contextLogin } = useAuth();
+  const nav = useNavigate();
   const {
     handleSubmit,
     formState: { errors },
@@ -17,58 +22,112 @@ const AuthForm = ({ isLogin }: Props) => {
   } = useForm<User>({
     resolver: zodResolver(isLogin ? loginSchema : registerSchema),
   });
-
-  const nav = useNavigate();
-
   const onSubmit = async (data: User) => {
     try {
-      console.log("Submitting data:", data); // Kiểm tra dữ liệu submit
-
       if (isLogin) {
-        // Đăng nhập
-        const res = await instance.post(`/login`, data);
-        console.log("Login response:", res); // Kiểm tra phản hồi đăng nhập
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        localStorage.setItem("accessToken", res.data.accessToken);
-        nav("/");
+        const res = await instance.post(`/users/login`, data);
+        contextLogin(res.data.accessToken, res.data.user);
       } else {
-        // Đăng ký
-        const res = await instance.post(`/register`, {
+        const res = await instance.post(`/users/register`, {
           email: data.email,
           password: data.password,
         });
-        alert('Tạo tài khoản thành công')
-        console.log("Registration response:", res); // Kiểm tra phản hồi đăng ký
+        alert(res.data.message);
         nav("/login");
       }
-    } catch (error: any) {
-      console.error("Error submitting form:", error); // Kiểm tra lỗi
-      alert(error.response?.data || "Error!");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.log(error.response?.data);
+        alert(error.response?.data.message || "Error!");
+      } else if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("An unexpected error occurred.");
+      }
     }
   };
 
   return (
     <section className="section-login padding-tb-100">
       <div className="container">
+        <div className="row d-none">
+          <div className="col-lg-12">
+            <div
+              className="mb-30"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="400"
+            >
+              <div className="cr-banner">
+                <h1>{isLogin ? "Login" : "Register"}</h1>
+              </div>
+              <div className="cr-banner-sub-title">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore lacus vel facilisis.{" "}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-12">
-            <div className="cr-login" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-              <h2>{isLogin ? "Login" : "Register"}</h2>
-              <form className="cr-content-form" onSubmit={handleSubmit(onSubmit)}>
+            <div
+              className="cr-login"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="400"
+            >
+              <div className="form-logo">
+                <h2> {isLogin ? "Login" : "Register"}</h2>
+              </div>
+              <form
+                className="cr-content-form"
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <div className="form-group">
                   <label>Email Address*</label>
-                  <input type="email" className="form-control" {...register("email", { required: true })} />
-                  {errors.email && <span className="text-danger">{errors.email.message}</span>}
+                  <input
+                    type="email"
+                    className="form-control"
+                    {...register("email", { required: true })}
+                  />
+                  {errors.email && (
+                    <span className="text-danger">{errors.email.message}</span>
+                  )}
                 </div>
                 <div className="form-group">
                   <label>Password*</label>
-                  <input type="password" className="form-control" {...register("password", { required: true })} />
-                  {errors.password && <span className="text-danger">{errors.password.message}</span>}
+                  <input
+                    type="password"
+                    className="form-control"
+                    {...register("password", { required: true })}
+                  />
+                  {errors.password && (
+                    <span className="text-danger">
+                      {errors.password.message}
+                    </span>
+                  )}
                 </div>
-
-                <br />
-                <div className="login-buttons">
-                  <button type="submit" className="btn btn-success">
+                {!isLogin && (
+                  <div className="form-group">
+                    <label htmlFor="confirmPass" className="form-label">
+                      Confirm Password
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      {...register("confirmPass", { required: true })}
+                    />
+                    {errors.confirmPass && (
+                      <span className="text-danger">
+                        {errors.confirmPass.message}
+                      </span>
+                    )}
+                  </div>
+                )}
+                <div>
+                  <button className="btn btn-success">
                     {isLogin ? "Login" : "Register"}
                   </button>
                 </div>
@@ -82,4 +141,3 @@ const AuthForm = ({ isLogin }: Props) => {
 };
 
 export default AuthForm;
-  

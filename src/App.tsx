@@ -1,26 +1,29 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Dashboard from "./pages/admin/Dashboard";
 import Notfound from "./pages/Notfound";
-
 import ProductForm from "./components/ProductForm";
 import AuthForm from "./pages/AuthForm";
 import Header from "./components/Header";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ShopLeftSidebar from "./pages/categories/ShopLeftSidebar";
 import ProductDetail from "./pages/Clients/products/ProductDetail";
-
 import About from "./pages/Clients/page/About";
 import Cart from "./pages/Clients/page/Cart";
 import CheckOut from "./pages/Clients/page/CheckOut";
 import Contact from "./pages/Clients/page/Contact";
 import Blog from "./pages/blog/Blog";
+import CategoryForm from "./components/CategoryForm";
+import CategoryList from "./components/CategoryList";
 
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
   return (
     <>
-      <Header />
+      {!isAdminRoute && <Header />}
       <Routes>
         <Route path="/">
           <Route path="" element={<Home />} />
@@ -35,13 +38,14 @@ function App() {
         </Route>
         <Route path="/login" element={<AuthForm isLogin />} />
         <Route path="/register" element={<AuthForm />} />
-
         <Route path="/admin">
           <Route path="" element={<Dashboard />} />
+          <Route path="product-add" element={<ProductForm />} />
+          <Route path="product-edit/:id" element={<ProductForm />} />
+          <Route path="category-add" element={<CategoryForm />} />
+          <Route path="category-edit/:id" element={<CategoryForm />} />
+          <Route path="category" element={<CategoryList />} />
         </Route>
-
-        <Route path="/admin/product-add" element={<ProductForm />} />
-        <Route path="/admin/product-edit/:id" element={<ProductForm />} />
       </Routes>
     </>
   );

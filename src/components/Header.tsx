@@ -52,17 +52,17 @@ const Header = () => {
                       </a>
                       <ul className="dropdown-menu">
                         <li>
-                          <Link className="dropdown-item" to={'/register'}>
+                          <Link className="dropdown-item" to={"/register"}>
                             Register
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={'page/checkout'}>
+                          <Link className="dropdown-item" to={"page/checkout"}>
                             Checkout
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={'/login'}>
+                          <Link className="dropdown-item" to={"/login"}>
                             Login
                           </Link>
                         </li>
@@ -463,7 +463,7 @@ const Header = () => {
                 >
                   <ul className="navbar-nav">
                     <li className="nav-item">
-                      <Link className="nav-link" to={"/"} >
+                      <Link className="nav-link" to={"/"}>
                         Home
                       </Link>
                     </li>
@@ -524,10 +524,7 @@ const Header = () => {
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link
-                        className="nav-link dropdown-toggle"
-                        to={'blog'}
-                      >
+                      <Link className="nav-link dropdown-toggle" to={"blog"}>
                         Blog
                       </Link>
                     </li>
