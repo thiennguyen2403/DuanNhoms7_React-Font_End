@@ -20,11 +20,13 @@ const CategoryList = () => {
   const removeCategory = async (_id: string | undefined) => {
     if (!_id) return;
 
-    try {
-      await instance.delete(`/categories/${_id}`);
-      setCategories(categories.filter((category) => category._id !== _id));
-    } catch (error) {
-      console.error("Error removing category:", error);
+    if (confirm("Bạn có muốn xóa danh mục này không")) {
+      try {
+        await instance.delete(`/categories/${_id}`);
+        setCategories(categories.filter((category) => category._id !== _id));
+      } catch (error) {
+        console.error("Error removing category:", error);
+      }
     }
   };
 

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   isLogin?: boolean;
 };
+
 const AuthForm = ({ isLogin }: Props) => {
   const { login: contextLogin } = useAuth();
   const nav = useNavigate();
@@ -21,6 +22,7 @@ const AuthForm = ({ isLogin }: Props) => {
   } = useForm<User>({
     resolver: zodResolver(isLogin ? loginSchema : registerSchema),
   });
+
   const onSubmit = async (data: User) => {
     try {
       if (isLogin) {
@@ -42,6 +44,27 @@ const AuthForm = ({ isLogin }: Props) => {
         alert(error.message);
       } else {
         alert("An unexpected error occurred.");
+      }
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    const email = prompt("Please enter your email:");
+    if (email) {
+      try {
+        await instance.post(`http://localhost:8000/api/users/forgot`, {
+          email,
+        });
+        alert("Password reset link has been sent to your email.");
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+          console.log(error.response?.data);
+          alert(error.response?.data.message || "Error!");
+        } else if (error instanceof Error) {
+          alert(error.message);
+        } else {
+          alert("An unexpected error occurred.");
+        }
       }
     }
   };
@@ -125,10 +148,21 @@ const AuthForm = ({ isLogin }: Props) => {
                     )}
                   </div>
                 )}
-                <div>
+                <div className="d-flex justify-content-between align-items-center">
                   <button className="btn btn-success">
                     {isLogin ? "Login" : "Register"}
                   </button>
+                  {isLogin && (
+                    <div className="forgot-password">
+                      <button
+                        type="button"
+                        className="btn "
+                        onClick={handleForgotPassword}
+                      >
+                        Forgot Password?
+                      </button>
+                    </div>
+                  )}
                 </div>
               </form>
             </div>

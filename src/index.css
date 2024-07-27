@@ -2356,7 +2356,7 @@ ul.navbar-nav .dropdown:hover .dropdown-menu {
   width: 80px;
   height: 80px;
   content: "";
-  background-image: url("../img/shape/4.png");
+  background-image: url("../src/css/assets/img/product/4.jpg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -2368,6 +2368,7 @@ ul.navbar-nav .dropdown:hover .dropdown-menu {
   animation: rotate 10s linear infinite;
   opacity: 0.5;
 }
+
 .cr-hero-banner .container::after {
   width: 100px;
   height: 100px;
@@ -9812,5 +9813,3 @@ iframe {
   text-decoration: none; /* Loại bỏ gạch chân của liên kết */
   border-radius: 5px; /* Bo tròn góc của nút */
 }
-
-/*# sourceMappingURL=style.css.map */

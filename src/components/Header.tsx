@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+// Header.tsx
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextType } from "../context/AuthContext";
 import { Category } from "../interfaces/Category";
@@ -26,7 +27,9 @@ const Header = () => {
 
   return (
     <>
-      <header>
+      <header className="header-menu-bg">
+        {" "}
+        {/* Áp dụng lớp CSS */}
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -55,9 +58,11 @@ const Header = () => {
                     aria-label="Default select example"
                   >
                     <option selected>All Categories</option>
-                    <option value="1">Mens</option>
-                    <option value="2">Womens</option>
-                    <option value="3">Electronics</option>
+                    {categories.map((category) => (
+                      <option key={category._id} value={category._id}>
+                        {category.title}
+                      </option>
+                    ))}
                   </select>
                   <a href="javascript:void(0)" className="search-btn">
                     <i className="ri-search-line"></i>
@@ -141,7 +146,6 @@ const Header = () => {
         <div className="cr-fix" id="cr-main-menu-desk">
           <div className="container">
             <div className="cr-menu-list">
-              {/* Categories menu here */}
               <nav className="navbar navbar-expand-lg">
                 <a
                   href="javascript:void(0)"
