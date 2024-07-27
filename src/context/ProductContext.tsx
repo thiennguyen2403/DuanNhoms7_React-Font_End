@@ -39,8 +39,10 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
 
   const handleRemove = async (id: string) => {
     try {
-      await instance.delete(`/products/${id}`);
-      dispatch({ type: "DELETE_PRODUCT", payload: id });
+      if (confirm("Bạn có muốn xóa sản phẩm này không?")) {
+        await instance.delete(`/products/${id}`);
+        dispatch({ type: "DELETE_PRODUCT", payload: id });
+      }
     } catch (error) {
       console.error("Failed to delete product:", error);
     }
@@ -48,14 +50,17 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
   const handleProduct = async (product: Product) => {
     try {
       const { id, ...productData } = product;
-      
+
       if (id) {
-      const  response = await instance.patch(`/products/${id}`, productData);
+        const response = await instance.patch(`/products/${id}`, productData);
         dispatch({ type: "UPDATE_PRODUCT", payload: response.data.data });
+        alert("Update thành công!");
       } else {
-      const  response = await instance.post("/products", productData);
+        const response = await instance.post("/products", productData);
         dispatch({ type: "ADD_PRODUCT", payload: response.data.data });
+        alert("Thêm sản phẩm thành công");
       }
+
       nav("/admin");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {

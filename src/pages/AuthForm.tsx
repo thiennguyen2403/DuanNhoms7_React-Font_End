@@ -30,7 +30,6 @@ const AuthForm = ({ isLogin }: Props) => {
         const res = await instance.post(`/users/register`, {
           email: data.email,
           password: data.password,
-         
         });
         alert(res.data.message);
         nav("/login");

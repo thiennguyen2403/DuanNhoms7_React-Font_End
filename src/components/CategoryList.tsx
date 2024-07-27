@@ -5,27 +5,41 @@ import instance from "../api";
 
 const CategoryList = () => {
   const [categories, setCategories] = useState<Category[]>([]);
+
   useEffect(() => {
     (async () => {
-      const { data } = await instance.get(`/categories`);
-      setCategories(data.data);
+      try {
+        const { data } = await instance.get(`/categories`);
+        setCategories(data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
     })();
   }, []);
 
   const removeCategory = async (_id: string | undefined) => {
-    console.log(_id);
+    if (!_id) return;
+    if (confirm("Bạn có muốn xóa danh mục này không?")) {
+      try {
+        await instance.delete(`/categories/${_id}`);
+        setCategories(categories.filter((category) => category._id !== _id));
+      } catch (error) {
+        console.error("Error removing category:", error);
+      }
+    }
   };
+
   return (
     <div>
       <h1>Hello Admin</h1>
       <Link to="/admin/category-add" className="btn btn-primary">
-        Them danh muc moi
+        Thêm danh mục mới
       </Link>
-      <table className="table table-bodered table-striped text-center">
+      <table className="table table-bordered table-striped text-center">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Tittle</th>
+            <th>Title</th>
             <th>Description</th>
             <th>Action</th>
           </tr>

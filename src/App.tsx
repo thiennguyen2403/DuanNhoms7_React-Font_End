@@ -35,6 +35,7 @@ function App() {
           <Route path="page/checkout" element={<CheckOut />} />
           <Route path="blog" element={<Blog />} />
           <Route path="*" element={<Notfound />} />
+          <Route path="productdetail/:id" element={<ProductDetail />} />
         </Route>
         <Route path="/login" element={<AuthForm isLogin />} />
         <Route path="/register" element={<AuthForm />} />

@@ -9765,4 +9765,52 @@ iframe {
     margin-bottom: 24px;
   }
 }
+/* Đảm bảo rằng các sản phẩm được căn chỉnh đúng cách */
+.section-product-banner {
+  padding-bottom: 100px;
+}
+
+.cr-banner-container {
+  display: flex; /* Sử dụng flexbox để sắp xếp sản phẩm theo hàng ngang */
+  justify-content: space-between; /* Cách đều các box sản phẩm */
+  flex-wrap: wrap; /* Cho phép các box sản phẩm tự động xuống dòng nếu không đủ chỗ */
+}
+
+.cr-product-banner {
+  width: 30%; /* Đặt chiều rộng của từng box sản phẩm (30% để có 3 box trong một hàng) */
+  box-sizing: border-box; /* Đảm bảo rằng padding và border không làm thay đổi chiều rộng */
+  margin-bottom: 20px; /* Khoảng cách dưới mỗi box sản phẩm */
+}
+
+.cr-product-banner img {
+  width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của box sản phẩm */
+  height: auto; /* Giữ tỷ lệ khung hình của ảnh */
+  display: block; /* Loại bỏ khoảng trống dưới ảnh */
+}
+
+.cr-product-banner-contain {
+  padding: 10px; /* Padding bên trong box sản phẩm */
+  text-align: center; /* Căn giữa nội dung trong box sản phẩm */
+}
+
+.cr-product-banner h5 {
+  margin: 10px 0; /* Khoảng cách trên và dưới tiêu đề */
+}
+
+.cr-product-banner p {
+  margin: 5px 0; /* Khoảng cách trên và dưới văn bản khuyến mại */
+}
+
+.cr-product-banner-buttons {
+  margin-top: 10px; /* Khoảng cách trên nút "Shop Now" */
+}
+
+.cr-button {
+  padding: 10px 20px; /* Padding của nút */
+  background-color: #000; /* Màu nền của nút */
+  color: #fff; /* Màu chữ của nút */
+  text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+  border-radius: 5px; /* Bo tròn góc của nút */
+}
+
 /*# sourceMappingURL=style.css.map */

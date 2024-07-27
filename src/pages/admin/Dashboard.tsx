@@ -24,6 +24,7 @@ const Dashboard = () => {
             <th>Title</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Category</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -34,6 +35,7 @@ const Dashboard = () => {
               <td>{item.title}</td>
               <td>{item.price}</td>
               <td>{item.description}</td>
+              <td>{item.category?.title}</td>
               <td>
                 <button
                   className="btn btn-danger"
