@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Hello Admin</h1>
-      <Link className="btn btn-success" to={`/admin/product-add`}>
+      <Link className="btn btn-primary" to={`/admin/product-add`}>
         Add new product
       </Link>
       <table className="table table-bordered table-striped">
