@@ -1,5 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
+import "./index.css";
 import Home from "./pages/Home";
 import Dashboard from "./pages/admin/Dashboard";
 import Notfound from "./pages/Notfound";
@@ -16,6 +17,7 @@ import Contact from "./pages/Clients/page/Contact";
 import Blog from "./pages/blog/Blog";
 import CategoryForm from "./components/CategoryForm";
 import CategoryList from "./components/CategoryList";
+import Admin from "./pages/admin/Admin";
 
 function App() {
   const location = useLocation();
@@ -46,6 +48,7 @@ function App() {
           <Route path="category-add" element={<CategoryForm />} />
           <Route path="category-edit/:id" element={<CategoryForm />} />
           <Route path="category" element={<CategoryList />} />
+          <Route path="admindb" element={<Admin />} />
         </Route>
       </Routes>
     </>
