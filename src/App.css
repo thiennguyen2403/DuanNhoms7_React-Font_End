@@ -4,6 +4,137 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* AdminHeader.css */
+.admin-header {
+  background-color: #1d479b; /* Dark background for admin */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* CartPage.css */
+
+/* Style for the main container */
+.cart-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+/* Style for the header */
+.cart-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Style for the table */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+
+.cart-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.cart-table td {
+  background-color: #fff;
+}
+
+.cart-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style for the buttons */
+.cart-container .btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-container .btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cart-container .btn-danger:hover {
+  background-color: #c82333;
+}
+/* CartPage.css */
+
+.empty-cart-message {
+  text-align: center;
+  margin-top: 15rem; /* Điều chỉnh khoảng cách phía trên */
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.cart-container .btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.cart-container .btn-success:hover {
+  background-color: #218838;
+}
+
+.cart-container h1 {
+  margin-top: 50px;
+}
+/* Style for the total price row */
+.cart-total {
+  font-weight: bold;
+  text-align: right;
+  padding: 1rem;
+}
+
+.admin-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.admin-nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-nav ul li {
+  display: inline;
+}
+
+.admin-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-nav ul li a:hover {
+  background-color: #2d3748; /* Slightly lighter color on hover */
+  text-decoration: none;
+}
+
+.admin-nav ul li a.active {
+  background-color: #4a5568; /* Active link background color */
+}
 
 /* General header styling */
 .header {

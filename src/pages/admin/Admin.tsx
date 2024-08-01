@@ -60,7 +60,7 @@ const Admin = () => {
                   >
                     <ul className="nav nav-collapse">
                       <li>
-                        <Link to="../demo1/index">
+                        <Link to="/admin">
                           <span className="sub-item">Dashboard 1</span>
                         </Link>
                       </li>

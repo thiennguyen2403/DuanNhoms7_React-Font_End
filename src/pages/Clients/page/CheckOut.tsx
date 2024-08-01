@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface Props {}
-
-const CheckOut = (props: Props) => {
+const CheckOut = () => {
   return (
     <>
-      
       {/* mobile */}
       <div className="cr-sidebar-overlay"></div>
       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">
@@ -156,7 +153,7 @@ const CheckOut = (props: Props) => {
                   <h2>Check-Out</h2>
                   <span>
                     {" "}
-                    <Link to={'/'}>Home</Link> - Checkout
+                    <Link to={"/"}>Home</Link> - Checkout
                   </span>
                 </div>
               </div>

@@ -1,0 +1,48 @@
+[1mdiff --git a/src/pages/Clients/page/CheckOut.tsx b/src/pages/Clients/page/CheckOut.tsx[m
+[1mindex 8ed8f10c..8f5f1c7a 100644[m
+[1m--- a/src/pages/Clients/page/CheckOut.tsx[m
+[1m+++ b/src/pages/Clients/page/CheckOut.tsx[m
+[36m@@ -1,12 +1,9 @@[m
+ import React from "react";[m
+ import { Link } from "react-router-dom";[m
+ [m
+[31m-interface Props {}[m
+[31m-[m
+[31m-const CheckOut = (props: Props) => {[m
+[32m+[m[32mconst CheckOut = () => {[m
+   return ([m
+     <>[m
+[31m-      [m
+       {/* mobile */}[m
+       <div className="cr-sidebar-overlay"></div>[m
+       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">[m
+[36m@@ -156,7 +153,7 @@[m [mconst CheckOut = (props: Props) => {[m
+                   <h2>Check-Out</h2>[m
+                   <span>[m
+                     {" "}[m
+[31m-                    <Link to={'/'}>Home</Link> - Checkout[m
+[32m+[m[32m                    <Link to={"/"}>Home</Link> - Checkout[m
+                   </span>[m
+                 </div>[m
+               </div>[m
+[1mdiff --git a/src/pages/Clients/page/Contact.tsx b/src/pages/Clients/page/Contact.tsx[m
+[1mindex 5bb13f7c..45d81062 100644[m
+[1m--- a/src/pages/Clients/page/Contact.tsx[m
+[1m+++ b/src/pages/Clients/page/Contact.tsx[m
+[36m@@ -6,7 +6,6 @@[m [minterface Props {}[m
+ const Contact = (props: Props) => {[m
+   return ([m
+     <>[m
+[31m-      [m
+       {/* mobile */}[m
+       <div className="cr-sidebar-overlay"></div>[m
+       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">[m
+[36m@@ -156,7 +155,7 @@[m [mconst Contact = (props: Props) => {[m
+                   <h2>Contact</h2>[m
+                   <span>[m
+                     {" "}[m
+[31m-                    <Link to={'/'}>Home</Link> - Contact[m
+[32m+[m[32m                    <Link to={"/"}>Home</Link> - Contact[m
+                   </span>[m
+                 </div>[m
+               </div>[m

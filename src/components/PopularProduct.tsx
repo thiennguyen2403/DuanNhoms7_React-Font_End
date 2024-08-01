@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import { ProductContext } from "../context/ProductContext";
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+
 import { Category } from "../interfaces/Category";
 import instance from "../api";
-import { Link } from "react-router-dom";
+import { Product } from "../interfaces/Product";
+import { CartContext } from "../context/CartContext"; // Import CartContext
+import { ProductContext } from "../context/ProductContext";
 
 const PopularProduct = () => {
   const { state } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext); // Get addToCart function
   const [categories, setCategories] = useState<Category[]>([]);
   const topThreeProducts = state.products.slice(0, 3);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await instance.get(`/categories`);
-        console.log(data.data);
+        const { data } = await instance.get(`/categories`); // Fetch categories
         setCategories(data.data);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
@@ -25,6 +27,11 @@ const PopularProduct = () => {
   if (!state || !Array.isArray(state.products)) {
     return <div>Loading...</div>;
   }
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product, 1); // Call addToCart with product and quantity
+    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+  };
 
   return (
     <>
@@ -55,7 +62,7 @@ const PopularProduct = () => {
                         All
                       </li>
                       {categories.map((item) => (
-                        <li key={item._id} data-filter={`.${item.title}`}>
+                        <li key={item._id} data-filter={item.title}>
                           {item.title}
                         </li>
                       ))}
@@ -70,12 +77,12 @@ const PopularProduct = () => {
                 {state.products.map((item) => (
                   <div
                     className="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24"
-                    key={item.id}
+                    key={item._id} // Use _id for unique key
                   >
                     <div className="cr-product-card">
                       <div className="cr-product-image">
                         <div className="cr-image-inner zoom-image-hover">
-                          <img src={item.images} alt="product-1" />
+                          <img src={item.images} alt={item.title} />
                         </div>
                         <div className="cr-side-view">
                           <a href="javascript:void(0)" className="wishlist">
@@ -92,14 +99,18 @@ const PopularProduct = () => {
                         </div>
                         <a
                           className="cr-shopping-bag"
-                          href="javascript:void(0)"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault(); // Prevent default link behavior
+                            handleAddToCart(item); // Add to cart on click
+                          }}
                         >
                           <i className="ri-shopping-bag-line"></i>
                         </a>
                       </div>
                       <div className="cr-product-details">
-                        <div className="cr-brand" key={item._id}>
-                          <Link to={`/productdetail/${item._id}`}>
+                        <div className="cr-brand">
+                          <Link to={`/products/${item._id}`}>
                             <h6>{item.title}</h6>
                           </Link>
                           <div className="cr-star">
@@ -115,7 +126,7 @@ const PopularProduct = () => {
                           {item.description}
                         </a>
                         <p className="cr-price">
-                          <span className="new-price">{item.price}</span>
+                          <span className="new-price">${item.price}</span>
                           <span className="old-price">$123.25</span>
                         </p>
                       </div>
@@ -135,8 +146,8 @@ const PopularProduct = () => {
               <h1>Sản Phẩm Hot</h1>
               <div className="cr-banner-container">
                 {topThreeProducts.map((item) => (
-                  <div className="cr-product-banner" key={item.id}>
-                    <img src={item.images} alt="product-banner" />
+                  <div className="cr-product-banner" key={item._id}>
+                    <img src={item.images} alt={item.title} />
                     <div className="cr-product-banner-contain">
                       <Link to={`/productdetail/${item._id}`}>
                         <h5>{item.title}</h5>

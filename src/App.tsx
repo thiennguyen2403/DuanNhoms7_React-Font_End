@@ -11,13 +11,14 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ShopLeftSidebar from "./pages/categories/ShopLeftSidebar";
 import ProductDetail from "./components/ProductDetail";
 import About from "./pages/Clients/page/About";
-import Cart from "./pages/Clients/page/Cart";
 import CheckOut from "./pages/Clients/page/CheckOut";
 import Contact from "./pages/Clients/page/Contact";
 import Blog from "./pages/blog/Blog";
 import CategoryForm from "./components/CategoryForm";
 import CategoryList from "./components/CategoryList";
-import Admin from "./pages/admin/Admin";
+import CartPage from "./pages/Clients/page/CartPage";
+import AdminHeader from "./pages/admin/AdminHeader";
+import UsesList from "./components/UsesList";
 
 function App() {
   const location = useLocation();
@@ -25,30 +26,29 @@ function App() {
 
   return (
     <>
-      {!isAdminRoute && <Header />}
+      {isAdminRoute ? <AdminHeader /> : <Header />}
       <Routes>
-        <Route path="/">
-          <Route path="" element={<Home />} />
-          <Route path="categories" element={<ShopLeftSidebar />} />
-          <Route path="products" element={<ProductDetail />} />
-          <Route path="page/about" element={<About />} />
-          <Route path="page/cart" element={<Cart />} />
-          <Route path="page/contact" element={<Contact />} />
-          <Route path="page/checkout" element={<CheckOut />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="*" element={<Notfound />} />
-          <Route path="productdetail/:id" element={<ProductDetail />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<ShopLeftSidebar />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/page/about" element={<About />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/page/contact" element={<Contact />} />
+        <Route path="/page/checkout" element={<CheckOut />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="*" element={<Notfound />} />
+
         <Route path="/login" element={<AuthForm isLogin />} />
         <Route path="/register" element={<AuthForm />} />
+
         <Route path="/admin">
           <Route path="" element={<Dashboard />} />
+          <Route path="users" element={<UsesList />} />
           <Route path="product-add" element={<ProductForm />} />
           <Route path="product-edit/:id" element={<ProductForm />} />
           <Route path="category-add" element={<CategoryForm />} />
           <Route path="category-edit/:id" element={<CategoryForm />} />
           <Route path="category" element={<CategoryList />} />
-          <Route path="admindb" element={<Admin />} />
         </Route>
       </Routes>
     </>

@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface Props {}
-
-const Contact = (props: Props) => {
+const Contact = () => {
   return (
     <>
-      
       {/* mobile */}
       <div className="cr-sidebar-overlay"></div>
       <div id="cr_mobile_menu" className="cr-side-cart cr-mobile-menu">
@@ -156,7 +153,7 @@ const Contact = (props: Props) => {
                   <h2>Contact</h2>
                   <span>
                     {" "}
-                    <Link to={'/'}>Home</Link> - Contact
+                    <Link to={"/"}>Home</Link> - Contact
                   </span>
                 </div>
               </div>

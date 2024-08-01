@@ -1,107 +1,65 @@
-import React from "react";
-import { useCart } from "../../../context/CartContext";
+import React, { useContext } from "react";
+import { CartContext, CartContextType } from "../../../context/CartContext";
+import { CartItem } from "../../../reduces/cartReducer";
 
 const CartPage = () => {
-  const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+  const { state, removeFromCart, checkout } = useContext(
+    CartContext
+  ) as CartContextType;
 
-  const handleQuantityChange = (productId: string, quantity: number) => {
-    // Cập nhật số lượng chỉ khi giá trị là số và lớn hơn 0
-    if (quantity > 0) {
-      updateQuantity(productId, quantity);
-    }
-  };
-
-  const handleInputChange = (productId: string, value: string) => {
-    // Chuyển giá trị input thành số nguyên và kiểm tra hợp lệ
-    const quantity = parseInt(value, 10);
-    if (!isNaN(quantity) && quantity > 0) {
-      handleQuantityChange(productId, quantity);
-    }
-  };
+  if (!state.products || state.products.length === 0) {
+    return (
+      <>
+        <h1 className="empty-cart-message">Giỏ hàng của bạn trống!</h1>;
+      </>
+    );
+  }
 
   return (
-    <div className="container">
-      <h2>Your Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th className="text-center">Quantity</th>
-              <th>Total</th>
-              <th>Action</th>
+    <div className="cart-container">
+      <h1>Giỏ hàng của bạn!</h1>
+      <table className="cart-table">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Thành tiền</th>
+            <th>Xóa</th>
+          </tr>
+        </thead>
+        <tbody>
+          {state.products.map((product: CartItem, index: number) => (
+            <tr key={product.product?._id || index}>
+              <td>{index + 1}</td>
+              <td>{product.product?.title || "Không có tiêu đề"}</td>
+              <td>{product.quantity}</td>
+              <td>{product.product?.price || 0}</td>
+              <td>{(product.product?.price || 0) * product.quantity}</td>
+              <td>
+                <button
+                  onClick={() => removeFromCart(String(product.product?._id))}
+                  className="btn btn-danger"
+                >
+                  Xóa
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {cart.map((item) => (
-              <tr key={item.product._id}>
-                <td>
-                  <img
-                    src={item.product.images}
-                    alt={item.product.title}
-                    width="100"
-                  />
-                  {item.product.title}
-                </td>
-                <td>${item.product.price}</td>
-                <td>
-                  <div className="input-group">
-                    <button
-                      className="btn btn-outline-secondary"
-                      onClick={() =>
-                        handleQuantityChange(
-                          item.product._id,
-                          item.quantity - 1
-                        )
-                      }
-                      disabled={item.quantity <= 1}
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      className="form-control"
-                      value={item.quantity}
-                      min="1"
-                      onChange={(e) =>
-                        handleInputChange(item.product._id, e.target.value)
-                      }
-                    />
-                    <button
-                      className="btn btn-outline-secondary"
-                      onClick={() =>
-                        handleQuantityChange(
-                          item.product._id,
-                          item.quantity + 1
-                        )
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                </td>
-                <td>${(item.product.price * item.quantity).toFixed(2)}</td>
-                <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => removeFromCart(item.product._id)}
-                  >
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {cart.length > 0 && (
-        <button className="btn btn-warning" onClick={clearCart}>
-          Clear Cart
-        </button>
-      )}
+          ))}
+          <tr>
+            <td colSpan={4} className="cart-total">
+              Tổng tiền
+            </td>
+            <td>{state.totalPrice}</td>
+            <td>
+              <button onClick={checkout} className="btn btn-success">
+                Thanh toán
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

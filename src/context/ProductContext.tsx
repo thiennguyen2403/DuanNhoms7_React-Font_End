@@ -52,21 +52,25 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
       const { id, ...productData } = product;
 
       if (id) {
+        // Cập nhật sản phẩm
         const response = await instance.patch(`/products/${id}`, productData);
-        dispatch({ type: "UPDATE_PRODUCT", payload: response.data.data });
-        alert("Update thành công!");
+        dispatch({ type: "UPDATE_PRODUCT", payload: response.data });
+        alert("Cập nhật sản phẩm thành công!");
       } else {
+        // Thêm sản phẩm mới
         const response = await instance.post("/products", productData);
-        dispatch({ type: "ADD_PRODUCT", payload: response.data.data });
-        alert("Thêm sản phẩm thành công");
+        dispatch({ type: "ADD_PRODUCT", payload: response.data });
+        alert("Thêm sản phẩm thành công!");
       }
 
       nav("/admin");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         console.error("Axios error:", error.response?.data || error.message);
+        alert(`Lỗi: ${error.response?.data.message || error.message}`);
       } else {
         console.error("Unknown error:", error);
+        alert("Đã xảy ra lỗi không xác định.");
       }
     }
   };

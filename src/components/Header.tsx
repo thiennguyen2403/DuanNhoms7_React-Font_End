@@ -28,8 +28,6 @@ const Header = () => {
   return (
     <>
       <header className="header-menu-bg">
-        {" "}
-        {/* Áp dụng lớp CSS */}
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -110,10 +108,7 @@ const Header = () => {
                               </Link>
                             </li>
                             <li>
-                              <Link
-                                className="dropdown-item"
-                                to={"page/checkout"}
-                              >
+                              <Link className="dropdown-item" to={"/checkout"}>
                                 Checkout
                               </Link>
                             </li>
@@ -131,13 +126,13 @@ const Header = () => {
                     <i className="ri-heart-3-line"></i>
                     <span>Wishlist</span>
                   </a>
-                  <a
-                    href="javascript:void(0)"
+                  <Link
+                    to="/cart"
                     className="cr-right-bar-item Shopping-toggle"
                   >
                     <i className="ri-shopping-cart-line"></i>
                     <span>Cart</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -198,12 +193,12 @@ const Header = () => {
                   <a href="wishlist.html" className="cr-right-bar-item">
                     <i className="ri-heart-line"></i>
                   </a>
-                  <a
-                    href="javascript:void(0)"
+                  <Link
+                    to="/cart"
                     className="cr-right-bar-item Shopping-toggle"
                   >
                     <i className="ri-shopping-cart-line"></i>
-                  </a>
+                  </Link>
                 </div>
                 <div
                   className="collapse navbar-collapse"
@@ -216,10 +211,7 @@ const Header = () => {
                       </Link>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link
-                        className="nav-link dropdown-toggle"
-                        to={"categories"}
-                      >
+                      <Link className="nav-link " to={"categories"}>
                         Category
                       </Link>
                       <ul className="dropdown-menu">
@@ -233,18 +225,12 @@ const Header = () => {
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link
-                        className="nav-link dropdown-toggle"
-                        to={"products"}
-                      >
+                      <Link className="nav-link " to={"products"}>
                         Product
                       </Link>
                     </li>
                     <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="javascript:void(0)"
-                      >
+                      <a className="nav-link " href="javascript:void(0)">
                         Pages
                       </a>
                       <ul className="dropdown-menu">
@@ -281,7 +267,7 @@ const Header = () => {
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link className="nav-link dropdown-toggle" to={"blog"}>
+                      <Link className="nav-link " to={"blog"}>
                         Blog
                       </Link>
                     </li>
