@@ -1,37 +1,48 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { Category } from "../interfaces/Category";
 import instance from "../api";
 import { Product } from "../interfaces/Product";
-import { CartContext } from "../context/CartContext"; // Import CartContext
+import { CartContext } from "../context/CartContext";
 import { ProductContext } from "../context/ProductContext";
 
 const PopularProduct = () => {
   const { state } = useContext(ProductContext);
-  const { addToCart } = useContext(CartContext); // Get addToCart function
+  const { addToCart } = useContext(CartContext);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(
+    undefined
+  );
   const topThreeProducts = state.products.slice(0, 3);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await instance.get(`/categories`); // Fetch categories
+        const { data } = await instance.get(`/categories`);
         setCategories(data.data);
       } catch (error) {
-        console.error("Failed to fetch categories:", error);
+        console.error("Không thể lấy danh mục:", error);
       }
     })();
   }, []);
 
   if (!state || !Array.isArray(state.products)) {
-    return <div>Loading...</div>;
+    return <div>Đang tải...</div>;
   }
 
   const handleAddToCart = (product: Product) => {
-    addToCart(product, 1); // Call addToCart with product and quantity
+    addToCart(product, 1);
     alert("Sản phẩm đã được thêm vào giỏ hàng!");
   };
+
+  const handleCategorySelect = (category: string | undefined) => {
+    setSelectedCategory(category);
+  };
+
+  // Kiểm tra để đảm bảo `product.category` không phải là `undefined` trước khi truy cập `_id`
+  const filteredProducts = state.products.filter(
+    (product) => product.category?._id === selectedCategory
+  );
 
   return (
     <>
@@ -41,12 +52,13 @@ const PopularProduct = () => {
             <div className="col-lg-12">
               <div className="mb-30">
                 <div className="cr-banner">
-                  <h2>Popular Products</h2>
+                  <h2>Sản phẩm phổ biến</h2>
                 </div>
                 <div className="cr-banner-sub-title">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore lacus vel facilisis.
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
                   </p>
                 </div>
               </div>
@@ -58,11 +70,22 @@ const PopularProduct = () => {
                 <div className="col-lg-12 col-sm-6 col-6 cr-product-box mb-24">
                   <div className="cr-product-tabs">
                     <ul>
-                      <li className="active" data-filter="all">
-                        All
+                      <li
+                        className={
+                          selectedCategory === undefined ? "active" : ""
+                        }
+                        onClick={() => handleCategorySelect(undefined)}
+                      >
+                        Tất cả
                       </li>
                       {categories.map((item) => (
-                        <li key={item._id} data-filter={item.title}>
+                        <li
+                          key={item._id}
+                          className={
+                            selectedCategory === item._id ? "active" : ""
+                          }
+                          onClick={() => handleCategorySelect(item._id)}
+                        >
                           {item.title}
                         </li>
                       ))}
@@ -74,10 +97,10 @@ const PopularProduct = () => {
             </div>
             <div className="col-xl-9 col-lg-8 col-12 mb-24">
               <div className="row mb-minus-24">
-                {state.products.map((item) => (
+                {filteredProducts.map((item) => (
                   <div
                     className="mix vegetable col-xxl-3 col-xl-4 col-6 cr-product-box mb-24"
-                    key={item._id} // Use _id for unique key
+                    key={item._id}
                   >
                     <div className="cr-product-card">
                       <div className="cr-product-image">
@@ -101,8 +124,8 @@ const PopularProduct = () => {
                           className="cr-shopping-bag"
                           href="#"
                           onClick={(e) => {
-                            e.preventDefault(); // Prevent default link behavior
-                            handleAddToCart(item); // Add to cart on click
+                            e.preventDefault();
+                            handleAddToCart(item);
                           }}
                         >
                           <i className="ri-shopping-bag-line"></i>
@@ -149,16 +172,16 @@ const PopularProduct = () => {
                   <div className="cr-product-banner" key={item._id}>
                     <img src={item.images} alt={item.title} />
                     <div className="cr-product-banner-contain">
-                      <Link to={`/productdetail/${item._id}`}>
+                      <Link to={`/products/${item._id}`}>
                         <h5>{item.title}</h5>
                       </Link>
                       <p>
-                        <span className="percent">30%</span> Off
-                        <span className="text">on first order</span>
+                        <span className="percent">30%</span> Giảm
+                        <span className="text">trên đơn hàng đầu tiên</span>
                       </p>
                       <div className="cr-product-banner-buttons">
                         <a href="shop-left-sidebar.html" className="cr-button">
-                          Shop Now
+                          Mua ngay
                         </a>
                       </div>
                     </div>
@@ -187,7 +210,7 @@ const PopularProduct = () => {
                           <i className="ri-red-packet-line"></i>
                         </div>
                         <div className="cr-services-contain">
-                          <h4>Product Packing</h4>
+                          <h4>Đóng gói sản phẩm</h4>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing.
                           </p>
@@ -200,7 +223,7 @@ const PopularProduct = () => {
                           <i className="ri-customer-service-2-line"></i>
                         </div>
                         <div className="cr-services-contain">
-                          <h4>24X7 Support</h4>
+                          <h4>Hỗ trợ 24/7</h4>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing.
                           </p>
@@ -213,7 +236,7 @@ const PopularProduct = () => {
                           <i className="ri-truck-line"></i>
                         </div>
                         <div className="cr-services-contain">
-                          <h4>Delivery in 5 Days</h4>
+                          <h4>Giao hàng trong 5 ngày</h4>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing.
                           </p>
@@ -226,7 +249,7 @@ const PopularProduct = () => {
                           <i className="ri-hand-heart-line"></i>
                         </div>
                         <div className="cr-services-contain">
-                          <h4>Handmade Products</h4>
+                          <h4>Sản phẩm thủ công</h4>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing.
                           </p>

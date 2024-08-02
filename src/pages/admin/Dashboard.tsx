@@ -30,8 +30,8 @@ const Dashboard = () => {
         </thead>
         <tbody>
           {state.products.map((item: Product) => (
-            <tr key={item._id}>
-              <td>{item._id}</td>
+            <tr key={item.id}>
+              <td>{item.id}</td>
               <td>{item.title}</td>
               <td>{item.price}</td>
               <td>{item.description}</td>

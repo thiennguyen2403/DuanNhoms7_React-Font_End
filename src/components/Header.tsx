@@ -1,4 +1,3 @@
-// Header.tsx
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextType } from "../context/AuthContext";
@@ -94,6 +93,14 @@ const Header = () => {
                                 </a>
                               </li>
                             )}
+                            <li>
+                              <Link
+                                className="dropdown-item"
+                                to="/order-history"
+                              >
+                                Order History
+                              </Link>
+                            </li>
                             <li>
                               <a className="dropdown-item" onClick={logout}>
                                 Logout
@@ -271,6 +278,14 @@ const Header = () => {
                         Blog
                       </Link>
                     </li>
+                    {/* Add the new Order History link here */}
+                    {user && (
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/historyCart">
+                          Order History
+                        </Link>
+                      </li>
+                    )}
                   </ul>
                 </div>
               </nav>

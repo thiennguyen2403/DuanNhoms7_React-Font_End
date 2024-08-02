@@ -54,12 +54,12 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
       if (id) {
         // Cập nhật sản phẩm
         const response = await instance.patch(`/products/${id}`, productData);
-        dispatch({ type: "UPDATE_PRODUCT", payload: response.data });
+        dispatch({ type: "UPDATE_PRODUCT", payload: response.data.data });
         alert("Cập nhật sản phẩm thành công!");
       } else {
         // Thêm sản phẩm mới
         const response = await instance.post("/products", productData);
-        dispatch({ type: "ADD_PRODUCT", payload: response.data });
+        dispatch({ type: "ADD_PRODUCT", payload: response.data.data });
         alert("Thêm sản phẩm thành công!");
       }
 

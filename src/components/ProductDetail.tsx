@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../interfaces/Product";
 
 import instance from "../api";
+import { CartContext } from "../context/CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
+  const { addToCart } = useContext(CartContext);
+  const nav = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -22,6 +25,11 @@ const ProductDetail = () => {
       fetchProduct();
     }
   }, [id]);
+  const handleAddToCart = (product: Product) => {
+    addToCart(product, 1); // Call addToCart with product and quantity
+    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+    nav("/cart");
+  };
 
   return (
     <>
@@ -85,52 +93,7 @@ const ProductDetail = () => {
                   </div>
                   <p>(75 Review)</p>
                 </div>
-                {/* <div className="list">
-                  <ul>
-                    <li>
-                      <label>
-                        Brand <span>:</span>
-                      </label>
-                      {product?.brand || "Brand Name"}
-                    </li>
-                    <li>
-                      <label>
-                        Flavour <span>:</span>
-                      </label>
-                      {product?.flavour || "Flavour"}
-                    </li>
-                    <li>
-                      <label>
-                        Diet Type <span>:</span>
-                      </label>
-                      {product?.dietType || "Diet Type"}
-                    </li>
-                    <li>
-                      <label>
-                        Weight <span>:</span>
-                      </label>
-                      {product?.weight || "Weight"}
-                    </li>
-                    <li>
-                      <label>
-                        Speciality <span>:</span>
-                      </label>
-                      {product?.speciality || "Speciality"}
-                    </li>
-                    <li>
-                      <label>
-                        Info <span>:</span>
-                      </label>
-                      {product?.info || "Additional Info"}
-                    </li>
-                    <li>
-                      <label>
-                        Items <span>:</span>
-                      </label>
-                      {product?.items || "Items"}
-                    </li>
-                  </ul>
-                </div> */}
+
                 <div className="cr-product-price">
                   <span className="new-price">${product?.price || "0.00"}</span>
                   {/* Uncomment if you have an old price */}
@@ -153,7 +116,18 @@ const ProductDetail = () => {
                     </button>
                   </div>
                   <div className="cr-add-button">
-                    <button type="button" className="cr-button cr-shopping-bag">
+                    <button
+                      type="button"
+                      className="cr-button cr-shopping-bag"
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent default link behavior
+                        if (product) {
+                          handleAddToCart(product);
+                        } else {
+                          alert("Product information is not available.");
+                        }
+                      }}
+                    >
                       Add to cart
                     </button>
                   </div>

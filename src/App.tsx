@@ -19,6 +19,9 @@ import CategoryList from "./components/CategoryList";
 import CartPage from "./pages/Clients/page/CartPage";
 import AdminHeader from "./pages/admin/AdminHeader";
 import UsesList from "./components/UsesList";
+import CheckoutPage from "./pages/Clients/page/CheckOut";
+import OrderDetailsPage from "./pages/Clients/page/OrderDetailsPage";
+import OrderHistoryPage from "./pages/Clients/page/OrderHistoryPage";
 
 function App() {
   const location = useLocation();
@@ -36,6 +39,9 @@ function App() {
         <Route path="/page/contact" element={<Contact />} />
         <Route path="/page/checkout" element={<CheckOut />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-details" element={<OrderDetailsPage />} />
+        <Route path="/historyCart" element={<OrderHistoryPage />} />
         <Route path="*" element={<Notfound />} />
 
         <Route path="/login" element={<AuthForm isLogin />} />

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { CartContext, CartContextType } from "../../../context/CartContext";
 import { CartItem } from "../../../reduces/cartReducer";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
-  const { state, removeFromCart, checkout } = useContext(
-    CartContext
-  ) as CartContextType;
+  const nav = useNavigate();
+  const { state, removeFromCart } = useContext(CartContext) as CartContextType;
 
   if (!state.products || state.products.length === 0) {
     return (
@@ -14,7 +14,14 @@ const CartPage = () => {
       </>
     );
   }
-
+  const handleCheckout = () => {
+    nav("/checkout", {
+      state: {
+        products: state.products,
+        totalPrice: state.totalPrice,
+      },
+    });
+  };
   return (
     <div className="cart-container">
       <h1>Giỏ hàng của bạn!</h1>
@@ -23,6 +30,7 @@ const CartPage = () => {
           <tr>
             <th>STT</th>
             <th>Tên sản phẩm</th>
+            <th>Hình Ảnh</th>
             <th>Số lượng</th>
             <th>Giá</th>
             <th>Thành tiền</th>
@@ -34,6 +42,14 @@ const CartPage = () => {
             <tr key={product.product?._id || index}>
               <td>{index + 1}</td>
               <td>{product.product?.title || "Không có tiêu đề"}</td>
+              <td>
+                <img
+                  src={product.product?.images}
+                  alt="Hình ảnh"
+                  className="img-fluid"
+                  style={{ width: "80px", height: "auto" }}
+                />
+              </td>
               <td>{product.quantity}</td>
               <td>{product.product?.price || 0}</td>
               <td>{(product.product?.price || 0) * product.quantity}</td>
@@ -53,7 +69,7 @@ const CartPage = () => {
             </td>
             <td>{state.totalPrice}</td>
             <td>
-              <button onClick={checkout} className="btn btn-success">
+              <button onClick={handleCheckout} className="btn btn-success">
                 Thanh toán
               </button>
             </td>

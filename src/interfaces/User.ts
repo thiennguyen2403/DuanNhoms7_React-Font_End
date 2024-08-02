@@ -1,8 +1,9 @@
 export interface User {
-  id?: string | number;
+  id?: string;
   email: string;
   password: string;
   confirmPass: string;
   role?: "admin" | "member";
   secretCode?: string;
+  isActive: boolean;
 }
