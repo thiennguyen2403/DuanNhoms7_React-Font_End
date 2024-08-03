@@ -171,34 +171,6 @@ const ProductDetail = () => {
                       Description
                     </button>
                   </li>
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link"
-                      id="additional-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#additional"
-                      type="button"
-                      role="tab"
-                      aria-controls="additional"
-                      aria-selected="false"
-                    >
-                      Information
-                    </button>
-                  </li>
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link"
-                      id="review-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#review"
-                      type="button"
-                      role="tab"
-                      aria-controls="review"
-                      aria-selected="false"
-                    >
-                      Review
-                    </button>
-                  </li>
                 </ul>
                 <div className="tab-content" id="myTabContent">
                   <div

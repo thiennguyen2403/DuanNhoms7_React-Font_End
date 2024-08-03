@@ -7,20 +7,33 @@ import instance from "../api";
 const Header = () => {
   const { user, logout } = useContext(AuthContext) as AuthContextType;
   const [categories, setCategories] = useState<Category[]>([]);
-  const nav = useNavigate();
+  const navigate = useNavigate(); // Sử dụng useNavigate để điều hướng
 
   useEffect(() => {
     (async () => {
-      const { data } = await instance.get(`/categories`);
-      setCategories(data.data);
+      try {
+        const { data } = await instance.get(`/categories`);
+        setCategories(data.data);
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
     })();
   }, []);
 
   const handleAdminAccess = () => {
     if (user && user.role === "admin") {
-      nav("/admin");
+      navigate("/admin");
     } else {
       alert("You do not have permission to access the admin page.");
+    }
+  };
+
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const categoryId = event.target.value;
+    if (categoryId) {
+      navigate(`/category/${categoryId}`);
     }
   };
 
@@ -53,8 +66,9 @@ const Header = () => {
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    onChange={handleCategoryChange}
                   >
-                    <option selected>All Categories</option>
+                    <option value="">All Categories</option>
                     {categories.map((category) => (
                       <option key={category._id} value={category._id}>
                         {category.title}
@@ -94,10 +108,7 @@ const Header = () => {
                               </li>
                             )}
                             <li>
-                              <Link
-                                className="dropdown-item"
-                                to="/order-history"
-                              >
+                              <Link className="dropdown-item" to="/historyCart">
                                 Order History
                               </Link>
                             </li>
@@ -129,10 +140,6 @@ const Header = () => {
                       </ul>
                     </li>
                   </ul>
-                  <a href="wishlist.html" className="cr-right-bar-item">
-                    <i className="ri-heart-3-line"></i>
-                    <span>Wishlist</span>
-                  </a>
                   <Link
                     to="/cart"
                     className="cr-right-bar-item Shopping-toggle"
@@ -211,20 +218,27 @@ const Header = () => {
                   className="collapse navbar-collapse"
                   id="navbarSupportedContent"
                 >
-                  <ul className="navbar-nav">
+                  <ul className="navbar-nav menuheader mx-auto text-center">
                     <li className="nav-item">
-                      <Link className="nav-link" to={"/"}>
+                      <Link className="nav-link text-dark fs-5" to={"/"}>
                         Home
                       </Link>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link className="nav-link " to={"categories"}>
+                      <a
+                        className="nav-link dropdown-toggle text-dark fs-5"
+                        href="javascript:void(0)"
+                        data-bs-toggle="dropdown"
+                      >
                         Category
-                      </Link>
+                      </a>
                       <ul className="dropdown-menu">
                         {categories.map((item) => (
                           <li key={item._id}>
-                            <Link className="dropdown-item" to={""}>
+                            <Link
+                              className="dropdown-item text-dark"
+                              to={`/category/${item._id}`}
+                            >
                               {item.title}
                             </Link>
                           </li>
@@ -232,56 +246,74 @@ const Header = () => {
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link className="nav-link " to={"products"}>
-                        Product
-                      </Link>
-                    </li>
-                    <li className="nav-item dropdown">
-                      <a className="nav-link " href="javascript:void(0)">
+                      <a
+                        className="nav-link text-dark fs-5"
+                        href="javascript:void(0)"
+                      >
                         Pages
                       </a>
                       <ul className="dropdown-menu">
                         <li>
-                          <Link className="dropdown-item" to={"page/about"}>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to={"page/about"}
+                          >
                             About Us
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"page/contact"}>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to={"page/contact"}
+                          >
                             Contact Us
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"page/cart"}>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to={"page/cart"}
+                          >
                             Cart
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"page/checkout"}>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to={"page/checkout"}
+                          >
                             Checkout
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"page/login"}>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to={"page/login"}
+                          >
                             Login
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"page/register"}>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to={"page/register"}
+                          >
                             Register
                           </Link>
                         </li>
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <Link className="nav-link " to={"blog"}>
+                      <Link className="nav-link text-dark fs-5" to={"blog"}>
                         Blog
                       </Link>
                     </li>
-                    {/* Add the new Order History link here */}
                     {user && (
                       <li className="nav-item">
-                        <Link className="nav-link" to="/historyCart">
+                        <Link
+                          className="nav-link text-dark fs-5"
+                          to="/historyCart"
+                        >
                           Order History
                         </Link>
                       </li>

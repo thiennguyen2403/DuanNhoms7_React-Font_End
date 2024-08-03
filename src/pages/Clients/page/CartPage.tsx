@@ -2,19 +2,40 @@ import React, { useContext } from "react";
 import { CartContext, CartContextType } from "../../../context/CartContext";
 import { CartItem } from "../../../reduces/cartReducer";
 import { useNavigate } from "react-router-dom";
+import { Order } from "../../../interfaces/Order";
 
 const CartPage = () => {
   const nav = useNavigate();
   const { state, removeFromCart } = useContext(CartContext) as CartContextType;
 
-  if (!state.products || state.products.length === 0) {
-    return (
-      <>
-        <h1 className="empty-cart-message">Giỏ hàng của bạn trống!</h1>;
-      </>
-    );
-  }
+  // Hàm lưu đơn hàng vào localStorage
+  const saveOrder = (order: Order) => {
+    const storedOrders = JSON.parse(localStorage.getItem("orders") || "[]");
+    storedOrders.push(order);
+    localStorage.setItem("orders", JSON.stringify(storedOrders));
+  };
+
   const handleCheckout = () => {
+    const user = localStorage.getItem("user");
+    const userId = user ? JSON.parse(user)._id : "unknown";
+
+    const newOrder: Order = {
+      id: new Date().toISOString(),
+      userId: userId,
+      products: state.products.map((item) => ({
+        product: {
+          ...item.product,
+          images: item.product.images || "", // Cung cấp giá trị mặc định
+        },
+        quantity: item.quantity,
+      })),
+      totalPrice: state.totalPrice,
+      orderStatus: "Pending",
+      date: new Date().toISOString(),
+    };
+
+    saveOrder(newOrder);
+
     nav("/checkout", {
       state: {
         products: state.products,
@@ -22,9 +43,19 @@ const CartPage = () => {
       },
     });
   };
+
+  if (!state.products || state.products.length === 0) {
+    return (
+      <>
+        <h1 className="empty-cart-message">Giỏ hàng của bạn trống!</h1>
+      </>
+    );
+  }
+
   return (
     <div className="cart-container">
       <h1>Giỏ hàng của bạn!</h1>
+
       <table className="cart-table">
         <thead>
           <tr>

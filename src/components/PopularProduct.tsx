@@ -39,10 +39,12 @@ const PopularProduct = () => {
     setSelectedCategory(category);
   };
 
-  // Kiểm tra để đảm bảo `product.category` không phải là `undefined` trước khi truy cập `_id`
-  const filteredProducts = state.products.filter(
-    (product) => product.category?._id === selectedCategory
-  );
+  // Lọc sản phẩm dựa trên selectedCategory
+  const filteredProducts = selectedCategory
+    ? state.products.filter(
+        (product) => product.category?._id === selectedCategory
+      )
+    : state.products;
 
   return (
     <>
@@ -105,7 +107,9 @@ const PopularProduct = () => {
                     <div className="cr-product-card">
                       <div className="cr-product-image">
                         <div className="cr-image-inner zoom-image-hover">
-                          <img src={item.images} alt={item.title} />
+                          <Link to={`/products/${item._id}`}>
+                            <img src={item.images} alt={item.title} />
+                          </Link>
                         </div>
                         <div className="cr-side-view">
                           <a href="javascript:void(0)" className="wishlist">
@@ -170,7 +174,10 @@ const PopularProduct = () => {
               <div className="cr-banner-container">
                 {topThreeProducts.map((item) => (
                   <div className="cr-product-banner" key={item._id}>
-                    <img src={item.images} alt={item.title} />
+                    <Link to={`/products/${item._id}`}>
+                      <img src={item.images} alt={item.title} />
+                    </Link>
+
                     <div className="cr-product-banner-contain">
                       <Link to={`/products/${item._id}`}>
                         <h5>{item.title}</h5>

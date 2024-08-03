@@ -3,6 +3,7 @@ import { Product } from "../../../interfaces/Product";
 
 interface Order {
   id: string;
+  userId: string;
   products: {
     product: Product;
     quantity: number;
@@ -16,9 +17,20 @@ const OrderHistoryPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
+    // Lấy userId từ localStorage
+    const user = localStorage.getItem("user");
+    const storedUserId = user ? JSON.parse(user)._id : null;
+
     // Fetch order history from local storage
     const storedOrders = JSON.parse(localStorage.getItem("orders") || "[]");
-    setOrders(storedOrders);
+
+    // Chỉ lấy các đơn hàng của người dùng hiện tại
+    if (storedUserId) {
+      const userOrders = storedOrders.filter(
+        (order: Order) => order.userId === storedUserId
+      );
+      setOrders(userOrders);
+    }
   }, []);
 
   return (

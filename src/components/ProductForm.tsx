@@ -32,7 +32,6 @@ const ProductForm = () => {
     const fetchProduct = async () => {
       try {
         const { data } = await instance.get(`/products/${id}`);
-        console.log("Fetched data:", data);
         reset(data.data);
       } catch (error) {
         console.error("Failed to fetch product:", error);
@@ -43,21 +42,42 @@ const ProductForm = () => {
       fetchProduct();
     }
   }, [id, reset]);
+
   useEffect(() => {
-    (async () => {
+    const fetchCategories = async () => {
       try {
         const { data } = await instance.get(`/categories`);
-        console.log(data);
         setCategories(data.data);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
       }
-    })();
+    };
+
+    fetchCategories();
   }, []);
+
+  // If you want to refetch categories after a successful create/update
+  const refetchCategories = async () => {
+    try {
+      const { data } = await instance.get(`/categories`);
+      setCategories(data.data);
+    } catch (error) {
+      console.error("Failed to refetch categories:", error);
+    }
+  };
+
+  const handleFormSubmit = async (data: Product) => {
+    try {
+      await handleProduct({ ...data, id });
+      await refetchCategories();
+    } catch (error) {
+      console.error("Failed to handle product:", error);
+    }
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit((data) => handleProduct({ ...data, id }))}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <h1>{id ? "Update product" : "Add product"}</h1>
 
         <div className="mb-3">
@@ -98,8 +118,9 @@ const ProductForm = () => {
             {...register("description")}
           />
         </div>
+
         <div className="mb-3">
-          <label htmlFor="" className="form-label">
+          <label htmlFor="category" className="form-label">
             Category
           </label>
           <select {...register("category")} className="form-control">
@@ -114,6 +135,7 @@ const ProductForm = () => {
             <span className="text-danger">{errors.category.message}</span>
           )}
         </div>
+
         <div className="mb-3">
           <button className="btn btn-primary w-100">
             {id ? "Update product" : "Add product"}

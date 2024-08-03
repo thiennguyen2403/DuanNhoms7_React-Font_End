@@ -22,6 +22,8 @@ import UsesList from "./components/UsesList";
 import CheckoutPage from "./pages/Clients/page/CheckOut";
 import OrderDetailsPage from "./pages/Clients/page/OrderDetailsPage";
 import OrderHistoryPage from "./pages/Clients/page/OrderHistoryPage";
+import CartList from "./components/CartList";
+import CategoryPage from "./components/CategoryPage";
 
 function App() {
   const location = useLocation();
@@ -42,6 +44,7 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-details" element={<OrderDetailsPage />} />
         <Route path="/historyCart" element={<OrderHistoryPage />} />
+        <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="*" element={<Notfound />} />
 
         <Route path="/login" element={<AuthForm isLogin />} />
@@ -55,6 +58,7 @@ function App() {
           <Route path="category-add" element={<CategoryForm />} />
           <Route path="category-edit/:id" element={<CategoryForm />} />
           <Route path="category" element={<CategoryList />} />
+          <Route path="cartList" element={<CartList />} />
         </Route>
       </Routes>
     </>

@@ -10,12 +10,12 @@ const Footer = () => {
               <div className="cr-footer-logo">
                 <div className="image">
                   <img
-                    src="assets/img/logo/logo.png"
+                    src="/src/css/assets/img/logo/logo.png"
                     alt="logo"
                     className="logo"
                   />
                   <img
-                    src="assets/img/logo/dark-logo.png"
+                    src="/src/css/assets/img/logo/dark-logo.png"
                     alt="logo"
                     className="dark-logo"
                   />
@@ -142,56 +142,7 @@ const Footer = () => {
                 </div>
                 <div className="cr-payment">
                   <div className="cr-insta-slider swiper-container">
-                    <div className="swiper-wrapper">
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/1.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/2.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/3.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/4.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/5.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/6.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/7.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                      <div className="swiper-slide">
-                        <a href="#" className="cr-payment-image">
-                          <img src="assets/img/insta/8.jpg" alt="insta" />
-                          <div className="payment-overlay"></div>
-                        </a>
-                      </div>
-                    </div>
+                    <div className="swiper-wrapper"></div>
                   </div>
                 </div>
               </div>

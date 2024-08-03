@@ -19,7 +19,7 @@ function AdminHeader() {
             <Link to="/admin/users">User</Link>
           </li>
           <li>
-            <Link to="/admin/cart">Cart</Link>
+            <Link to="/admin/cartList">Cart</Link>
           </li>
         </ul>
       </nav>
