@@ -35,7 +35,7 @@ const OrderHistoryPage = () => {
 
   return (
     <div className="container mt-5 p-4">
-      <h1 className="text-center mb-4">Lịch sử đơn hàng</h1>
+      <h1 className="text-center mb-4 fix">Lịch sử đơn hàng</h1>
       {orders.length === 0 ? (
         <p className="text-center">Bạn chưa có đơn hàng nào.</p>
       ) : (

@@ -52,9 +52,17 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = async (productId: string) => {
-    const res = await instance.delete(`/cart/product/${productId}`);
-    res.data.success &&
-      dispatch({ type: "REMOVE_FROM_CART", payload: { productId } });
+    try {
+      const res = await instance.delete(`/cart/product/${productId}`);
+      if (res.data.success) {
+        dispatch({ type: "REMOVE_FROM_CART", payload: { productId } });
+        console.log("Product removed:", productId);
+      } else {
+        console.error("Failed to remove product:", res.data.message);
+      }
+    } catch (error) {
+      console.error("Error removing product from cart:", error);
+    }
   };
 
   return (

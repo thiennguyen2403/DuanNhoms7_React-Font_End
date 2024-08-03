@@ -173,6 +173,9 @@ h2 {
   text-align: right;
   padding: 1rem;
 }
+.fix {
+  margin-top: 50px;
+}
 
 .admin-header .logo {
   font-size: 2rem;
