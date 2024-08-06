@@ -25,7 +25,7 @@ const CartPage = () => {
       products: state.products.map((item) => ({
         product: {
           ...item.product,
-          images: item.product.images || "", // Cung cấp giá trị mặc định
+          images: item.product.images || "",
         },
         quantity: item.quantity,
       })),

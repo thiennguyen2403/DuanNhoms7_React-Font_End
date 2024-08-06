@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { User } from "../interfaces/User";
 import instance from "../api";
 
-const UsesList = () => {
+const UsersList = () => {
   const [users, setUsers] = useState<User[]>([]); // State to store users list
 
   useEffect(() => {
@@ -27,11 +27,13 @@ const UsesList = () => {
       return;
     }
     try {
+      console.log(`Gửi yêu cầu khóa người dùng với ID: ${userId}`);
       const response = await instance.post(`/users/${userId}/lock`);
+      console.log("Phản hồi từ API khóa:", response.data);
       if (response.data.success) {
         setUsers(
           users.map((user) =>
-            user.id === userId ? { ...user, isActive: false } : user
+            user._id === userId ? { ...user, isActive: false } : user
           )
         );
       } else {
@@ -39,6 +41,29 @@ const UsesList = () => {
       }
     } catch (error) {
       console.error("Lỗi khi khóa người dùng:", error);
+    }
+  };
+
+  const handleUnlockUser = async (userId: string | undefined) => {
+    if (!userId) {
+      console.error("ID người dùng không hợp lệ");
+      return;
+    }
+    try {
+      console.log(`Gửi yêu cầu mở khóa người dùng với ID: ${userId}`);
+      const response = await instance.post(`/users/${userId}/unlock`);
+      console.log("Phản hồi từ API mở khóa:", response.data);
+      if (response.data.success) {
+        setUsers(
+          users.map((user) =>
+            user._id === userId ? { ...user, isActive: true } : user
+          )
+        );
+      } else {
+        console.error("Không thể mở khóa người dùng:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Lỗi khi mở khóa người dùng:", error);
     }
   };
 
@@ -52,20 +77,31 @@ const UsesList = () => {
           <thead>
             <tr>
               <th>Email Người Dùng</th>
+              <th>Trạng Thái</th>
               <th>Thao Tác</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
+              <tr key={user._id}>
                 <td>{user.email}</td>
+                <td>{user.isActive ? "Hoạt Động" : "Đã Khóa"}</td>
                 <td>
-                  <button
-                    className="btn btn-warning"
-                    onClick={() => handleLockUser(user.id)}
-                  >
-                    Khóa Người Dùng
-                  </button>
+                  {user.isActive ? (
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => handleLockUser(user._id)}
+                    >
+                      Khóa Người Dùng
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-success"
+                      onClick={() => handleUnlockUser(user._id)}
+                    >
+                      Mở Khóa Người Dùng
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -76,4 +112,4 @@ const UsesList = () => {
   );
 };
 
-export default UsesList;
+export default UsersList;

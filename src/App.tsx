@@ -10,7 +10,7 @@ import Header from "./components/Header";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ShopLeftSidebar from "./pages/categories/ShopLeftSidebar";
 import ProductDetail from "./components/ProductDetail";
-import About from "./pages/Clients/page/About";
+
 import CheckOut from "./pages/Clients/page/CheckOut";
 import Contact from "./pages/Clients/page/Contact";
 import Blog from "./pages/blog/Blog";
@@ -24,6 +24,7 @@ import OrderDetailsPage from "./pages/Clients/page/OrderDetailsPage";
 import OrderHistoryPage from "./pages/Clients/page/OrderHistoryPage";
 import CartList from "./components/CartList";
 import CategoryPage from "./components/CategoryPage";
+import ResetPasswordForm from "./components/ResetPasswordForm";
 
 function App() {
   const location = useLocation();
@@ -36,7 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<ShopLeftSidebar />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/page/about" element={<About />} />
+
         <Route path="/cart" element={<CartPage />} />
         <Route path="/page/contact" element={<Contact />} />
         <Route path="/page/checkout" element={<CheckOut />} />
@@ -45,6 +46,7 @@ function App() {
         <Route path="/order-details" element={<OrderDetailsPage />} />
         <Route path="/historyCart" element={<OrderHistoryPage />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="/reset-password/:id" element={<ResetPasswordForm />} />
         <Route path="*" element={<Notfound />} />
 
         <Route path="/login" element={<AuthForm isLogin />} />

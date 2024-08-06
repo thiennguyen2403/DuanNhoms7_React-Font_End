@@ -30,7 +30,7 @@ const OrderDetailsPage = () => {
 
   return (
     <div className="container mt-5 p-4">
-      <h1 className="text-center mb-4">Chi tiết đơn hàng</h1>
+      <h1 className="text-center mb-4 fix">Chi tiết đơn hàng</h1>
       <p className="text-center">Đơn hàng của bạn đã được đặt thành công!</p>
       <p className="text-center font-weight-bold">
         Trạng thái đơn hàng: {state.orderStatus}

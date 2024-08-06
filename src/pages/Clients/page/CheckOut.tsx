@@ -60,7 +60,7 @@ const CheckoutPage = () => {
 
   return (
     <div className="container mt-5 p-4">
-      <h1 className="text-center mb-4">Thông tin đơn hàng</h1>
+      <h1 className="text-center mb-4 fix">Thông tin đơn hàng</h1>
       <table className="table table-bordered">
         <thead className="thead-light">
           <tr>

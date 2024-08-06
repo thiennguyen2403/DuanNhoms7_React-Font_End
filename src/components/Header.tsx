@@ -117,6 +117,20 @@ const Header = () => {
                                 Logout
                               </a>
                             </li>
+                            <li>
+                              {user?._id ? (
+                                <Link
+                                  className="dropdown-item"
+                                  to={`/reset-password/${user._id}`}
+                                >
+                                  Thay đổi mật khẩu
+                                </Link>
+                              ) : (
+                                <span className="dropdown-item">
+                                  Thay đổi mật khẩu
+                                </span>
+                              )}
+                            </li>
                           </>
                         ) : (
                           <>

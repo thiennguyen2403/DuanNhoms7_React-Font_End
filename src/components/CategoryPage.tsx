@@ -16,13 +16,15 @@ const CategoryPage = () => {
           const { data: categoryData } = await instance.get(
             `/categories/${categoryId}`
           );
-          setCategoryName(categoryData.data.title);
+          console.log("Category Data:", categoryData);
+          setCategoryName(categoryData.data.title); // Đảm bảo bạn lấy đúng thuộc tính
 
           // Fetch products for the category
           const { data: productData } = await instance.get(`/products`, {
             params: { category: categoryId },
           });
-          setProducts(productData.data);
+          console.log("Product Data:", productData);
+          setProducts(productData.data); // Đảm bảo bạn lấy đúng cấu trúc dữ liệu trả về
         } catch (error) {
           console.error("Error fetching data:", error);
         }
@@ -40,7 +42,7 @@ const CategoryPage = () => {
           </p>
         ) : (
           products.map((product) => (
-            <div key={product._id} className="col-md-4">
+            <div key={product._id} className="col-md-4 mb-3">
               <div className="card">
                 <img
                   src={product.images}
@@ -50,7 +52,12 @@ const CategoryPage = () => {
                 <div className="card-body">
                   <h5 className="card-title">{product.title}</h5>
                   <p className="card-text">{product.price} VND</p>
-                  <Link to={`/products/${product._id}`}>Xem Chi Tiết</Link>
+                  <Link
+                    to={`/products/${product._id}`}
+                    className="btn btn-primary"
+                  >
+                    Xem Chi Tiết
+                  </Link>
                 </div>
               </div>
             </div>

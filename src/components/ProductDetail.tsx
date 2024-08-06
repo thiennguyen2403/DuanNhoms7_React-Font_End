@@ -8,6 +8,8 @@ import { CartContext } from "../context/CartContext";
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
   const { addToCart } = useContext(CartContext);
   const nav = useNavigate();
 
@@ -16,6 +18,7 @@ const ProductDetail = () => {
       try {
         const { data } = await instance.get(`/products/${id}`);
         setProduct(data.data);
+        setTotalPrice(data.data.price); // Set the initial total price
       } catch (error) {
         console.error("Failed to fetch product:", error);
       }
@@ -25,10 +28,25 @@ const ProductDetail = () => {
       fetchProduct();
     }
   }, [id]);
+
+  useEffect(() => {
+    if (product) {
+      setTotalPrice(product.price * quantity); // Update the total price whenever quantity or product changes
+    }
+  }, [product, quantity]);
+
   const handleAddToCart = (product: Product) => {
-    addToCart(product, 1); // Call addToCart with product and quantity
+    addToCart(product, quantity); // Call addToCart with product and quantity
     alert("Sản phẩm đã được thêm vào giỏ hàng!");
     nav("/cart");
+  };
+
+  const handleQuantityChange = (type: "increase" | "decrease") => {
+    setQuantity((prevQuantity) => {
+      const newQuantity =
+        type === "increase" ? prevQuantity + 1 : Math.max(1, prevQuantity - 1);
+      return newQuantity;
+    });
   };
 
   return (
@@ -95,7 +113,7 @@ const ProductDetail = () => {
                 </div>
 
                 <div className="cr-product-price">
-                  <span className="new-price">${product?.price || "0.00"}</span>
+                  <span className="new-price">${totalPrice.toFixed(2)}</span>
                   {/* Uncomment if you have an old price */}
                   {/* <span className="old-price">${product?.oldPrice || "0.00"}</span> */}
                 </div>
@@ -104,14 +122,22 @@ const ProductDetail = () => {
                     <input
                       type="text"
                       placeholder="."
-                      value="1"
+                      value={quantity}
                       className="quantity"
                       readOnly
                     />
-                    <button type="button" className="plus" disabled>
+                    <button
+                      type="button"
+                      className="plus"
+                      onClick={() => handleQuantityChange("increase")}
+                    >
                       +
                     </button>
-                    <button type="button" className="minus" disabled>
+                    <button
+                      type="button"
+                      className="minus"
+                      onClick={() => handleQuantityChange("decrease")}
+                    >
                       -
                     </button>
                   </div>
